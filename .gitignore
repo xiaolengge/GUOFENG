@@ -1,12 +1,17 @@
 .DS_Store
-node_modules
+/web/node_modules
+/api/node_modules
+/mobile/node_modules
 /web/dist
-/web/api
-/web/mobile
+/mobile/dist
 
 # local env files
-.env.local
-.env.*.local
+/web/.env.local
+/api/.env.local
+/mobile/.env.local
+/web/.env.*.local
+/api/.env.*.local
+/mobile/.env.*.local
 
 # Log files
 npm-debug.log*
