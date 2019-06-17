@@ -32,7 +32,6 @@ export default {
 	@text-color:#000;
 	.el-menu.el-menu--horizontal{
 		background-color:@header-color;
-		text-color:@text-color;
 	}
 	.el-menu--horizontal>.el-menu-item:not(.is-disabled):focus,{
 		background-color:#1aa062fa;
@@ -40,5 +39,15 @@ export default {
 	.el-menu--horizontal>.el-menu-item:not(.is-disabled):hover,{
 		background-color: #1aa062fa;
 	}
-
+	.el-menu--horizontal>.el-menu-item.is-active{
+			color: 000;
+			border-bottom: 2px solid #10402a;
+	}
+	.el-menu--horizontal>.el-menu-item {
+		color: #41454e;
+	}
+	.hello{
+		display: flex;
+		
+	}
 </style>
