@@ -1,6 +1,7 @@
 <template>
   <div id="app">
 		<vheader></vheader>
+		<lbody></lbody>
   </div>
 </template>
 
