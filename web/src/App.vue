@@ -1,7 +1,8 @@
 <template>
   <div id="app">
 		<vheader></vheader>
-		<lbody></lbody>
+		<router-view></router-view>
+		<dibu></dibu>
   </div>
 </template>
 

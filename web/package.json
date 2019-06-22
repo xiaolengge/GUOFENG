@@ -19,6 +19,7 @@
     "axios": "^0.18.0",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
+    "mongodb": "^3.2.7",
     "vue-cli-plugin-axios": "0.0.4",
     "vue-cli-plugin-element": "^1.0.1",
     "vue-template-compiler": "^2.6.10"
@@ -31,5 +32,10 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "description": "```\r npm install\r ```",
+  "main": "babel.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

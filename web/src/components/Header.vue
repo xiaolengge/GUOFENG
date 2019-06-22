@@ -2,8 +2,8 @@
   <div class="hello">
 		<el-menu :default-active="activeIndex"  class="el-menu-demo" mode="horizontal" @select="handleSelect">
 				<el-menu-item index="5"><img src="../assets/chifan.png" alt="" class="w-a"></el-menu-item>
-				<el-menu-item index="1">首页</el-menu-item>
-				<el-menu-item index="2">我的订单</el-menu-item>
+				<el-menu-item index="1"><router-link to="/index">首页</router-link></el-menu-item>
+				<el-menu-item index="2"><router-link to="/dingdan">我的订单</router-link></el-menu-item>
 				<el-menu-item index="3" >加盟合作</el-menu-item>
 				<el-menu-item index="4">我的客服</el-menu-item>
 				<el-menu-item index="6" class="w-a1" >登录</el-menu-item>
