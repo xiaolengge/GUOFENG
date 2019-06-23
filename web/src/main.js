@@ -8,10 +8,12 @@ import Shangjia from './components/Shangjia.vue'
 import Dibu from './components/Dibu.vue'
 import Header from './components/Header.vue'
 import Biaoqian from './components/Biaoqian.vue'
+import Shop from './components/Shopping.vue'
 
 
 Vue.config.productionTip = false
 Vue.component('vheader',Header);
+Vue.component('shop',Shop);
 Vue.component('biaoqian',Biaoqian);
 Vue.component('shangjia',Shangjia);
 Vue.component('dibu',Dibu);

@@ -15,7 +15,51 @@
 					<snav></snav>
 					<router-view></router-view>
 				</div>
-				<div class="r_nav"></div>
+				<div class="r_nav">
+					<div class="yiuhui">
+						<div class="header">
+							<span>优惠卷</span>
+							<span>
+								<i>更多</i>
+								<i class="el-icon-d-arrow-right"></i>
+							</span>
+						</div>
+						<ul class="yh_con">
+							<li v-for="(item,index) in yh" :key="item.id">
+								<div class="yhp">
+									<span class="je">
+										<div class="top">¥{{item.je}}</div>
+										<div class="bm">{{item.tiaoj}}</div>
+									</span>
+									<span class="towq">
+										<div class="tq"></div>
+										<div class="bq"></div>
+									</span>
+									<span class="lqu">领取</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="tuijian">
+						<div class="header">
+							<span>本店推荐</span>
+							<span>
+								<i>更多</i>
+								<i class="el-icon-d-arrow-right"></i>
+							</span>
+						</div>
+						<ul class="tuiji">
+							<li v-for="(item,index) in tj" :key="item.id">
+								<div class="l_img"><img :src="item.img" alt=""></div>
+								<div class="caim">
+									<div class="name">{{item.name}}</div>
+									<div class="lpl">{{item.peiliao}}</div>
+								</div>
+								<el-button type="success" size="mini" round class="mmm">下单</el-button>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 </template>
@@ -36,7 +80,13 @@ export default {
 				home_url:dpimg,
 				sp_name:'肯德基',
 				diz:'龙马潭区xx街道xx号',
-				pj:'xxx条'
+				pj:'xxx条',
+				yh:[
+					{id:1,je:'110',tiaoj:'满233块可用'},
+				],
+				tj:[
+					{id:1,name:'古蔺麻辣鸡',peiliao:'古蔺麻+辣鸡',img:'http://5b0988e595225.cdn.sohucs.com/images/20170926/a7f4c07c59594e54b737d08e27d84fb9.jpg'},
+				]
 			}
 		},
 	}
@@ -50,6 +100,7 @@ export default {
 	@coo1:#ccc;
 	@bj:'../assets/t_bj.jpg';
 	@mb1:3;
+	@fff:#fff;
 .bigbox{
 	font-family: @zt;
 	.topmsg{	
@@ -108,13 +159,157 @@ export default {
 	}
 	.l_con{
 		display: flex;
-		justify-content: start;
+		justify-content: center;
+		margin-top: 20px;
 		.l_nav{
 			width: @h1 - 30%;
+			background: @fff;
 			.el-menu-demo{
 				display: flex;
 				justify-content: center;
 				border-color: #22d783;
+			}
+		}
+		.r_nav{
+			width: @h1 - 75%;
+			margin-left: 10px;
+			.yiuhui{
+				.header{
+					font-size: 14px;
+					display: flex;
+					justify-content: space-between;
+					background: #22d783;
+					color: @fff;
+					i{
+						font-style: normal;
+					}
+					.el-icon-d-arrow-right{
+						margin-right: 5px;
+					}
+					span{
+						margin-left: 5px;
+					}
+				}
+				.yh_con{
+					list-style: none;
+					margin: 0;
+					padding: 0;
+					background: @fff;
+					li{
+						height: 80px;
+						border-bottom: 1px solid #ccc;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						.yhp{
+							background: #22d783;
+							width: 90%;
+							height: 85%;
+							border-radius: 4%;
+							display: flex;
+							justify-content: flex-start;
+							overflow: hidden;
+							.je{
+								width: 65%;
+								display: flex;
+								flex-direction: column;
+								justify-content: center;
+								padding-left: 20px;
+								.top{
+									color: #fff;
+									font-size: 30px;
+								}
+								.bm{
+									font-size: 12px;
+									color: #eee;
+								}
+							}
+							.towq{
+								display: flex;
+								flex-direction: column;
+								justify-content: space-between;
+								div{
+									width: 20px;
+									height: 20px;
+									background: #fff;
+									border-radius: 100%;
+									position: relative;
+								}
+								.tq{
+									top: -10px;
+									right: -11px;
+								}
+								.bq{
+									bottom: -10px;
+									right: -11px;
+								}
+							}
+							.lqu{
+								border-left: 3px dashed #fff;
+								display: flex;
+								align-items: center;
+								color: #fff;
+								justify-content: center;
+								width: 25%;
+							}
+						}
+					}
+				}
+			}
+			.tuijian{
+				.header{
+					font-size: 14px;
+					display: flex;
+					justify-content: space-between;
+					background: #22d783;
+					color: @fff;
+					i{
+						font-style: normal;
+					}
+					.el-icon-d-arrow-right{
+						margin-right: 5px;
+					}
+					span{
+						margin-left: 5px;
+					}
+				}
+				.tuiji{
+					list-style: none;
+					margin: 0;
+					padding: 0;
+					background: @fff;
+					li{
+						display: flex;
+						justify-content: flex-start;
+						height: 80px;
+						align-items: center;
+						.l_img{
+							width: 25%;
+							margin-left: 20px;
+							img{
+								width: 100%;
+								border-radius: 100%;
+							}
+						}
+						.caim{
+							margin-left: 10px;
+							.name{
+								font-weight: 700;
+							}
+							.lpl{
+								font-size: 12px;
+								color: #aaa;
+							}
+						}
+						.mmm{
+							margin: auto;
+							background-color: #22d783;
+							border-color: #22d783;
+							margin-right: 20px;
+							font-size: 12px;
+						}
+					}
+				}
 			}
 		}
 	}

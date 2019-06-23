@@ -3,6 +3,7 @@
 		<vheader></vheader>
 		<router-view></router-view>
 		<dibu></dibu>
+		<shop></shop>
   </div>
 </template>
 

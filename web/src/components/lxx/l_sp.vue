@@ -7,16 +7,16 @@
 					<p class="name">{{item.name}}</p>
 					<p class="con">{{item.content}}</p>
 					<div class="hui">
-						<span class="zan">{{item.zan}}</span>
-						<span class="cai">{{item.cai}}</span>
+						<span class="zan">赞:{{item.zan}}</span>
+						<span class="cai">踩:{{item.cai}}</span>
 							<el-collapse v-model="activeNames" @change="handleChange">
-								<el-collapse-item title="回复" name="1">
+								<el-collapse-item title="回复" :name="item.id">
 								<el-form ref="form" :model="form" label-width="80px">
-								  <el-form-item label="活动形式">
+								  <el-form-item label="">
 									<el-input type="textarea" v-model="form.desc"></el-input>
 								  </el-form-item>
 								  <el-form-item>
-									<el-button type="primary" @click="onSubmit">立即创建</el-button>
+									<el-button type="primary" @click="onSubmit">回复</el-button>
 								  </el-form-item>
 								</el-form>
 						
@@ -46,7 +46,6 @@
 			},
 			list:[
 				{id:1,name:'qq',content:'hhhhhhhhh',zan:'123',cai:'32',head:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561214514058&di=1c04244564b81e6deff057bee6bc173f&imgtype=0&src=http%3A%2F%2Fi5.hexunimg.cn%2F2015-06-02%2F176393877.jpg'},
-				{id:2,name:'qq',content:'hhhhhhhhh',zan:'123',cai:'32',head:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561214514058&di=1c04244564b81e6deff057bee6bc173f&imgtype=0&src=http%3A%2F%2Fi5.hexunimg.cn%2F2015-06-02%2F176393877.jpg'}
 			]
 		  };
 		},
@@ -71,11 +70,86 @@
 				width: 100%;
 				min-height: 80px;
 				border-bottom: 1px solid #ccc;
+				display: flex;
+				justify-content: flex-start;
+				align-items: flex-start;
 				.head_img{
-					height: 30px;
-					width: 30px;
+					height: 50px;
+					width: 50px;
+					border-radius: 50%;
 					img{
 						width: 100%;
+						height: 100%;
+						border-radius: 50%;
+					}
+				}
+				.pl_con{
+					font-size: 16px;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-around;
+					.name{
+						font-weight: 700;
+						margin: 0;
+					}
+					.con{
+						font-size: 14px;
+						margin: 0;
+					}
+					.hui{
+						font-size: 12px;
+						display: flex;
+						justify-content: flex-start;
+						.zan{
+							margin-right: 5px;
+						}
+						.cai{
+							margin-right: 5px;
+						}
+						.el-collapse-item__header{
+							background: none;
+							align-items: flex-start;
+							line-height: 14px;
+							height: auto;
+							.el-icon-arrow-right:before{
+								content: '';
+							}
+						}
+						.el-collapse-item__wrap{
+							background: none;
+							border: 0;
+							overflow: visible;
+							width: 185%;
+							.el-form{
+								display: flex;
+								justify-content: flex-start;
+								position: relative;
+								left: -20%;
+								.el-textarea__inner{
+									width: 140%;
+								}
+							}
+							.el-form-item{
+								margin: 0;
+								.el-form-item__content{
+									margin-left: -80px;
+								}
+							}
+							.el-collapse-item__content{
+								padding: 0;
+								.el-textarea{
+									    position: relative;
+										display: inline-block;
+										vertical-align: bottom;
+										font-size: 14px;
+										// width: 185%;
+								}
+							}
+							.el-button{
+								font-size: 10px;
+								margin-top: 15px;
+							}
+						}
 					}
 				}
 			}
