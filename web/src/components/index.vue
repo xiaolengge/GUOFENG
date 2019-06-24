@@ -2,6 +2,7 @@
 	<div>
 		<biaoqian></biaoqian>
 		<shangjia></shangjia>
+		<shop></shop>
 	</div>
 </template>
 

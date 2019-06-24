@@ -6,6 +6,7 @@ import jiameng from './components/jiameng.vue'
 import lbody from './components/lBody.vue'
 import lsp from './components/lxx/lsp.vue'
 import l_sp from './components/lxx/l_sp.vue'
+import Jies from './components/jiesuan.vue'
 
 Vue.use(Router)
 
@@ -32,6 +33,11 @@ export default new Router({
 		path:'/jiameng',
 		name:'jiameng',
 		component:jiameng
+		},
+		{
+		path:'/jiesuan',
+		name:'jiesuan',
+		component:Jies
 		},
 		{
 		  path: '/lbody',

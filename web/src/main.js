@@ -12,6 +12,7 @@ import Shop from './components/Shopping.vue'
 
 
 Vue.config.productionTip = false
+Vue.prototype.$axios = axios;
 Vue.component('vheader',Header);
 Vue.component('shop',Shop);
 Vue.component('biaoqian',Biaoqian);

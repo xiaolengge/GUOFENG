@@ -61,6 +61,7 @@
 					</div>
 				</div>
 			</div>
+			<shop></shop>
 		</div>
 </template>
 
