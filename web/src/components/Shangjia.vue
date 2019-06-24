@@ -2,9 +2,9 @@
 	<div class="w-sdian-a">
 		
 				<div class="w-sdian">
-					<div><img src="../assets/img/w-1.jpg" alt=""></div>
+					<div><img :src="dmian" alt=""></div>
 					<div class="w-sdian-b">
-						<span class="w-sdian-c">重庆鸡公煲</span>
+						<span class="w-sdian-c">{{dmin}}</span>
 							<el-rate
 							  v-model="value"
 							  disabled
@@ -12,7 +12,7 @@
 							  text-color="#ff9900"
 							  score-template="{value}">
 							</el-rate>
-							<span class="w-sdian-d">配送费￥1</span>
+							<span class="w-sdian-d">{{psong}} {{fyong}}</span>
 					</div>
 				</div>	
 		
@@ -20,10 +20,15 @@
 </template>
 
 <script>
+	import sjimg from '../assets/img/w-1.jpg'
 export default {
     data() {
       return {
-        value:3.7
+        value:3.7,
+		dmian:sjimg,
+		dmin:'重庆鸡公煲',
+		psong:'配送费￥',
+		fyong:1
       }
     }
   }

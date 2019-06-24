@@ -15,11 +15,11 @@
 						</div>
 						<div class="w-ddan-c">
 							<span>我的金币</span>
-							<span class="w-ddan-g">0个</span>
+							<span class="w-ddan-g">{{jbi}} {{ge}}</span>
 						</div>
 						<div class="w-ddan-d">
 							<span>我的余额</span>
-							<span class="w-ddan-h">0.00元</span>
+							<span class="w-ddan-h">{{yue}} {{yuan}}</span>
 						</div>
 					</div>
 					<div class="w-ddan-i">
@@ -60,14 +60,14 @@
 									<td class="w-biaoge-c">小计</td>
 								</tr>
 									<tr>
-									<td class="w-biaoge-a">蛋炒饭</td>
+									<td class="w-biaoge-a">{{spingb}}</td>
 									<td class="w-biaoge-b"><el-input-number v-model="num" @change="handleChange" :min="1" :max="10" label="描述文字"></el-input-number></td>
-									<td class="w-biaoge-c">20元</td>
+									<td class="w-biaoge-c">{{jine}} {{yuan}}</td>
 								</tr>
 									<tr>
-									<td class="w-biaoge-a">煎鸡蛋</td>
+									<td class="w-biaoge-a">{{spinga}}</td>
 									<td class="w-biaoge-b"><el-input-number v-model="nup" @change="handleChange" :min="1" :max="10" label="描述文字"></el-input-number></td>
-									<td class="w-biaoge-c">3元</td>
+									<td class="w-biaoge-c">{{jine}} {{yuan}}</td>
 								</tr>
 								
 							</table>
@@ -79,15 +79,15 @@
 					<div class="w-ddan-m">
 						<div class="w-ddan-c">
 							<span>我的红包</span>
-							<span class="w-ddan-h">0个</span>
+							<span class="w-ddan-h">{{jbi}} {{ge}}</span>
 						</div>
 						<div class="w-ddan-c">
 							<span>我的金币</span>
-							<span class="w-ddan-g">0个</span>
+							<span class="w-ddan-g">{{jbi}} {{ge}}</span>
 						</div>
 						<div class="w-ddan-d">
 							<span>我的余额</span>
-							<span class="w-ddan-h">0.00元</span>
+							<span class="w-ddan-h">{{yue}} {{yuan}}</span>
 						</div>
 					</div>
 				</el-tab-pane>
@@ -112,7 +112,13 @@
 				src: 'https://shadow.elemecdn.com/faas/desktop/media/img/default-avatar.38e40d.png?imageMogr2/format/webp/quality/85',
 				num: 1,
 				nup: 1,
-		 
+			jbi:0,
+			ge:' 个',
+			yue:0,
+			yuan:'元',
+			spingb:'蛋炒饭',
+			spinga:'煎鸡蛋',
+			jine:'30'
 		
       };
     },
