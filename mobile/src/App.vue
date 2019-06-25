@@ -1,8 +1,7 @@
 <template>
   <div id="app">
-    <mheader></mheader>
-		<xiangqin></xiangqin>
-		<Tabbar></Tabbar>
+   <router-view></router-view>
+	<Tabbar></Tabbar>
   </div>
 </template>
 
