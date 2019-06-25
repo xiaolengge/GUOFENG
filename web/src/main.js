@@ -13,6 +13,7 @@ import Shop from './components/Shopping.vue'
 // Vue.use(VueAxios, axios)
 
 Vue.config.productionTip = false
+
 Vue.component('vheader',Header);
 Vue.component('shop',Shop);
 Vue.component('biaoqian',Biaoqian);

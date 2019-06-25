@@ -1,21 +1,21 @@
 <template>
 	<div>
-		<mt-tabbar fixed v-model="selected">
+		<mt-tabbar fixed v-model="selected" id="w-yd-db">
 			<mt-tab-item id="tab1">
 				<img slot="icon" src="../assets/img/fangzi.png" />
-				首页
+				<router-link to="/index" class="w-dibu-a">首页</router-link>
 			</mt-tab-item>
 			<mt-tab-item id="tab2">
 				<img slot="icon" src="../assets/img/huangguan.png" />
-				商城
+				<router-link to="/huiyuan" class="w-dibu-a">会员</router-link>
 			</mt-tab-item>
 			<mt-tab-item id="tab3">
 				<img slot="icon" src="../assets/img/dd.png" />
-				更多精品
+				<router-link to="/dingdan" class="w-dibu-a">订单</router-link>
 			</mt-tab-item>
 			<mt-tab-item id="tab4">
 				<img slot="icon" src="../assets/img/gengduo.png" />
-				关于我们
+				登录
 			</mt-tab-item>
 		</mt-tabbar>
 	</div>
@@ -25,4 +25,11 @@
 </script>
 
 <style>
+	#w-yd-db{
+		background-color: #22d783;
+	}
+	.w-dibu-a{
+		color: #000;
+		text-decoration: none;
+	}
 </style>
