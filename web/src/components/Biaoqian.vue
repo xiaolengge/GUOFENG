@@ -21,6 +21,11 @@
 			v-model="input2">
 			</el-input>
 		</div>
+		<form action="http://localhost:3000/" method="POST">
+			<h2>sr</h2>
+			<input type="text" name="myinput">
+			<input type="submit" value="sub">
+		</form>
 	</div>
 </template>
 

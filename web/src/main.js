@@ -9,10 +9,10 @@ import Dibu from './components/Dibu.vue'
 import Header from './components/Header.vue'
 import Biaoqian from './components/Biaoqian.vue'
 import Shop from './components/Shopping.vue'
-
+ 
+// Vue.use(VueAxios, axios)
 
 Vue.config.productionTip = false
-Vue.prototype.$axios = axios;
 Vue.component('vheader',Header);
 Vue.component('shop',Shop);
 Vue.component('biaoqian',Biaoqian);
