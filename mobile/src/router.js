@@ -4,6 +4,8 @@ import Mint from 'mint-ui';
 import index from './components/index.vue'
 import huiyuan from './components/huiyuan.vue'
 import dingdan from './components/dingdan.vue'
+import wode from './components/wode.vue'
+import shezhi from './components/shezhi.vue'
 Vue.use(Mint);
 
 
@@ -32,6 +34,16 @@ export default new Router({
 		path:'/dingdan',
 		name:'dingdan',
 		component:dingdan
+		},
+		{
+		path:'/wode',
+		name:'wode',
+		component:wode
+		},
+		{
+		path:'/shezhi',
+		name:'shezhi',
+		component:shezhi
 		},
   ]
 })

@@ -29,7 +29,7 @@
 		<div class="w-lb-e">
 			<div class="w-lb-f">
 				<img src="../assets/img/boshimao.png" alt="" class="w-lb-g"><br>
-				<span>校园优选</span>
+				<span>校园</span>
 			</div>
 			<div class="w-lb-f">
 				<img src="../assets/img/wancan.png" alt="" class="w-lb-g"><br>
@@ -168,7 +168,6 @@
 	}
 	.w-lb-f{
 		text-align: center;
-		
 	}
 	.w-lb-e{
 		display: flex;

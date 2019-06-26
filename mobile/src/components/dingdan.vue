@@ -11,7 +11,7 @@
 			<mt-navbar v-model="selected" class="w-dd-c">
 			  <mt-tab-item id="1" ><span class="w-dd-a">全部</span></mt-tab-item>
 			  <mt-tab-item id="2"><span class="w-dd-b">代付款</span></mt-tab-item>
-			  <mt-tab-item id="3"><sapn class="w-dd-b">待使用</sapn></mt-tab-item>
+			  <mt-tab-item id="3"><sapn class="w-dd-b">待收货</sapn></mt-tab-item>
 			    <mt-tab-item id="4"><sapn class="w-dd-b">退款/售后</sapn></mt-tab-item>
 			</mt-navbar>
 		</div>
@@ -20,7 +20,7 @@
 			  <mt-tab-container-item id="1" style="display: block;">
 				<div class="w-dd-d" >
 					<div  class="w-dd-e" >
-						<div class="w-dd-f">麻辣小龙虾</div>
+						<div class="w-dd-f">{{name}}</div>
 						<div class="w-dd-g">支付成功</div>
 					</div>
 					<div class="w-dd-h">
@@ -33,13 +33,49 @@
 				</div>
 			  </mt-tab-container-item>
 			  <mt-tab-container-item id="2">
-				<div>bbb</div>
+				<div class="w-dd-d" >
+					<div  class="w-dd-e" >
+						<div class="w-dd-f">{{name}}</div>
+						<div class="w-dd-g">待支付</div>
+					</div>
+					<div class="w-dd-h">
+						<div><img src="../assets/img/xiaolongxia.png" alt=""></div>
+						<div class="w-dd-i">
+							<span>{{name}}</span><br>
+							<span>价钱:￥{{jq}}</span>
+						</div>
+					</div>
+				</div>
 			  </mt-tab-container-item>
 			  <mt-tab-container-item id="3">
-				<div>ccc</div>
+				<div class="w-dd-d" >
+					<div  class="w-dd-e" >
+						<div class="w-dd-f">{{name}}</div>
+						<div class="w-dd-g">待收货</div>
+					</div>
+					<div class="w-dd-h">
+						<div><img src="../assets/img/xiaolongxia.png" alt=""></div>
+						<div class="w-dd-i">
+							<span>{{name}}</span><br>
+							<span>价钱:￥{{jq}}</span>
+						</div>
+					</div>
+				</div>
 			  </mt-tab-container-item>
 			   <mt-tab-container-item id="4">
-			  				<div>ccc</div>
+			  		<div class="w-dd-d" >
+			  			<div  class="w-dd-e" >
+			  				<div class="w-dd-f">{{mb}}</div>
+			  				<div class="w-dd-g">退款成功</div>
+			  			</div>
+			  			<div class="w-dd-h">
+			  				<div><img src="../assets/img/mianbao.png" alt=""></div>
+			  				<div class="w-dd-i">
+			  					<span>{{name}}</span><br>
+			  					<span>价钱:￥{{jq}}</span>
+			  				</div>
+			  			</div>
+			  		</div>
 			  </mt-tab-container-item>
 			</mt-tab-container>
 		</div>
@@ -53,6 +89,7 @@
 	    return {
 	    selected:'',
 		name:'麻辣小龙虾',
+		mb:'小面包',
 		jq:'100'
 		
 	    }
@@ -62,7 +99,7 @@
 
 <style>
 	.w-dd-j{
-		height: 200px;
+		height: 580px;
 	}
 	.w-dd-d{
 		background: #fff;
@@ -70,7 +107,7 @@
 		margin-top: 10px;
 	}
 	.w-dingdan{
-		background: #dcddde;
+		background: #dcdddf80;
 	}
 	
 	.w-dd-h{
