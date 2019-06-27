@@ -83,13 +83,33 @@ export default {
 				diz:'龙马潭区xx街道xx号',
 				pj:'xxx条',
 				yh:[
-					{id:1,je:'110',tiaoj:'满233块可用'},
 				],
 				tj:[
-					{id:1,name:'古蔺麻辣鸡',peiliao:'古蔺麻+辣鸡',img:'http://5b0988e595225.cdn.sohucs.com/images/20170926/a7f4c07c59594e54b737d08e27d84fb9.jpg'},
+
 				]
 			}
 		},
+		created(){
+			 this.axios.post('/api/huoqu').then((response) => {
+			    console.log(response.data);
+				response.data.forEach((val,key) => {
+					this.yh.push(response.data[key]);
+				})
+			  })
+			  .catch(function (error) {
+			    console.log(error);
+			  });
+			  this.axios.post('/api/huoqu2').then((response) => {
+			     console.log(response.data);
+			  				response.data.forEach((val,key) => {
+			  					this.tj.push(response.data[key]);
+			  				})
+			   })
+			   .catch(function (error) {
+			     console.log(error);
+			   });
+		}
+		
 	}
 </script>
 

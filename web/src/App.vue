@@ -10,19 +10,18 @@
 
 
 export default {
-  name: 'app',
-  components: {
-    
-  },
+	name: 'app',
+	components: {	
+	},
 	created() {
-     var url="http://localhost:3000"
-	axios.get(url+'/product')
-	  .then(function (response) {
-	    console.log(response);
-	  })
-	  .catch(function (error) {
-	    console.log(error);
-	  });
+	//  var _data = {name:'qqq',age:13}
+	// this.axios.post('/api',_data).then(function (response) {
+	// 	console.log('发送');
+	//     console.log(response);
+	//   })
+	//   .catch(function (error) {
+	//     console.log(error);
+	//   });
     },
 }
 </script>

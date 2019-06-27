@@ -5,10 +5,13 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 
-var indexRouter = require('./routes/index');
+// var index = require('./routes/index');
 var usersRouter = require('./routes/users');
-var Product = require('./routes/product');
-var bodyParser = require('body-parser');
+// var Product = require('./routes/product');
+// <Express的中间件 BodyParser>> 在http请求种,POST、PUT、PATCH三种请求方法中包含着请求体,也就是所谓的request
+// var bodyParser = require('body-parser');
+var apiRouter = require('./routes/api');
+
 
 var app = express();
 //开启
@@ -21,8 +24,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({extended: false}));
 
 // app.all('*',function (req,res,next) {
 //     res.header("Access-Control-Allow-Origin","*");
@@ -35,15 +38,11 @@ app.use(function (req,res,next) {
     next();
 });
 
-    app.use(function (req, res) {   
-        res.setHeader('Content-Type', 'text/plain')   
-        res.write('you posted:\n') 
-        res.end(JSON.stringify(req.body, null, 2)) 
-    })
 
-app.use('/', Product);
+
+app.use('/', usersRouter);
 app.use('/users', usersRouter);
-app.use('/product', Product);
+app.use('/api/', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

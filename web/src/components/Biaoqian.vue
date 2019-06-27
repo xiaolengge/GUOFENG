@@ -20,12 +20,8 @@
 			id='w-sousuo'
 			v-model="input2">
 			</el-input>
+			<button @click="tianjia">1111</button>
 		</div>
-		<form action="http://localhost:3000/" method="POST">
-			<h2>sr</h2>
-			<input type="text" name="myinput">
-			<input type="submit" value="sub">
-		</form>
 	</div>
 </template>
 
@@ -35,7 +31,13 @@
 		    return {
 				input2: ''
 			}
-		}
+		},
+		methods: {
+			tianjia() {
+				var _data =	{id:3,name:'锅火',peiliao:'火',img:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561650936822&di=702e404198a6ff03b6917ee40ff5e999&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201806%2F10%2F20180610231206_bkdfd.jpg'};
+				this.axios.post('/api',_data,function(re){})
+			}
+		},
   };
 </script>
 
