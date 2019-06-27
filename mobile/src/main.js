@@ -8,7 +8,9 @@ import Tabbar from './components/Tabbar.vue'
 import xiangqin from './components/xiangqin.vue'
 import  './plugins/mint.js';
 
+import { Picker } from 'mint-ui';
 
+Vue.component(Picker.name, Picker);
 
 
 Vue.config.productionTip = false

@@ -71,10 +71,11 @@
 			  			<div class="w-dd-h">
 			  				<div><img src="../assets/img/mianbao.png" alt=""></div>
 			  				<div class="w-dd-i">
-			  					<span>{{name}}</span><br>
+			  					<span>{{namea}}</span><br>
 			  					<span>价钱:￥{{jq}}</span>
 			  				</div>
 			  			</div>
+						
 			  		</div>
 			  </mt-tab-container-item>
 			</mt-tab-container>
@@ -88,6 +89,7 @@
 	  data() {
 	    return {
 	    selected:'',
+		namea:'三明治',
 		name:'麻辣小龙虾',
 		mb:'小面包',
 		jq:'100'

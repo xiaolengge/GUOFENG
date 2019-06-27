@@ -6,6 +6,8 @@ import huiyuan from './components/huiyuan.vue'
 import dingdan from './components/dingdan.vue'
 import wode from './components/wode.vue'
 import shezhi from './components/shezhi.vue'
+import tijiaoddan from './components/tijiaoddan.vue'
+import zhifu from './components/zhifu.vue'
 Vue.use(Mint);
 
 
@@ -45,5 +47,17 @@ export default new Router({
 		name:'shezhi',
 		component:shezhi
 		},
+		{
+		path:'/tijiaoddan',
+		component:tijiaoddan,
+	
+		},
+		{
+		path:'/zhifu',
+		name:'zhifu',
+		component:zhifu
+		},
+		
+		
   ]
 })
