@@ -47,6 +47,11 @@ let  index_dp  = mongoose.Schema({
 	dmin:String,
 	fyong:String,
 })
+//定义注册登录表骨架
+let  zc  = mongoose.Schema({
+	username:String,
+	password:String,
+})
 //定义一个首页店铺表
 const Idp = mongoose.model('Idp',index_dp);
 // 定义一个优惠表
@@ -57,6 +62,8 @@ const TJ = mongoose.model('TJ',tuijie);
 const Sunz = mongoose.model('Sunz',sunzi);
 //定义一个评论表
 const Pin = mongoose.model('Pin',pin);
+//定义注册登录表
+const DL = mongoose.model('DL',zc);
 /* GET users listing. */
 router.post('/', function(req, res, next) {
 	
@@ -70,6 +77,52 @@ router.post('/', function(req, res, next) {
 			}
 		});
 		// res.send(new_cat)
+});
+//存储注册信息
+router.post('/zhuche', function(req, res, next) {
+		var username = req.body.username;
+		var password = req.body.password;
+		//用户名不能空
+		if(username == ''){
+			// resData.code = 1;
+			res.send = ('用户名不能为空'); 
+			return;
+		}
+		if(password == ''){
+			// resData.code = 2;
+			res.send = ('密码不能为空'); 
+			return;
+		}
+		DL.find({username:req.body.username}).then(function(userInfo ){
+		// console.log(userInfo); //若控制台返回空表示没有查到数据
+		if(userInfo){
+			//若数据库有该记录
+			res.send = ('用户名已被注册'); 
+			return;
+		}
+		// 用户名没有被注册则将用户保存在数据库中
+		
+		var new_zhanghao = new DL({username:req.body.username,password:req.body.password})
+			new_zhanghao.save(function(err,succ){
+				if(err){
+					console.log('保存失败')
+			}else{
+					console.log('保存成功')
+					console.log(succ)
+				}
+			});
+	});
+});
+//登录
+router.get('/dlu', function(req, res, next) {
+		const obj ={};
+		DL.find(obj,(err,docs) =>{
+			if(err){
+				console.log('查询失败')
+			}else{
+				res.send(docs);
+			}
+		})
 });
 //查询优惠卷表
 router.post('/huoqu', function(req, res, next) {
