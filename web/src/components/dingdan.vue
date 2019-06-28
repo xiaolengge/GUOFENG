@@ -56,20 +56,20 @@
 						<div class="w-ddan-k">
 							<table class="w-biaoge">
 								<tr>
-									<td v-for="item in items" class="w-biaoge-a">{{item.name}}</td>
-								
+									<td class="w-biaoge-a" v-for="item in items">{{item.name}}</td>
+									
 								</tr>
-									<tr>
-									<td class="w-biaoge-a">{{spingb}}</td>
+									<tr  v-for="(item,aa) in one" :key="item.id">
+									<td class="w-biaoge-a" >{{item.name}}</td>
 									<td class="w-biaoge-b"><el-input-number v-model="num" @change="handleChange" :min="1" :max="10" label="描述文字"></el-input-number></td>
-									<td class="w-biaoge-c">{{danjia}}元</td>
-									<td class="w-biaoge-c">{{jine}}元</td>
+									<td class="w-biaoge-c">{{item.danjia}}元</td>
+									<td class="w-biaoge-c">{{item.jine}}元</td>
 								</tr>
-									<tr>
-									<td class="w-biaoge-a">{{spinga}}</td>
+									<tr v-for="(item,bb) in tow" :key="item.id">
+									<td class="w-biaoge-a">{{item.name}}</td>
 									<td class="w-biaoge-b"><el-input-number v-model="nup" @change="handleChange" :min="1" :max="10" label="描述文字"></el-input-number></td>
-										<td class="w-biaoge-c">{{danjiaa}}元</td>
-									<td class="w-biaoge-c">{{jer}}元</td>
+									<td class="w-biaoge-c">{{item.danjia}}元</td>
+									<td class="w-biaoge-c">{{item.jine}}元</td>
 								</tr>
 								
 							</table>
