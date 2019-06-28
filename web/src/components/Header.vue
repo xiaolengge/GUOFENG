@@ -5,9 +5,9 @@
 				<el-menu-item index="1"><router-link to="/index" class="w-chongzhi">首页</router-link></el-menu-item>
 				<el-menu-item index="2"><router-link to="/dingdan"  class="w-chongzhi">我的订单</router-link></el-menu-item>
 				<el-menu-item index="3" ><router-link to="/jiameng"  class="w-chongzhi">加盟合作</router-link></el-menu-item>
-				<el-menu-item index="4">我的客服</el-menu-item>
-				<el-menu-item index="6" class="w-a1" >登录</el-menu-item>
-				<el-menu-item index="7" >注册</el-menu-item>
+				<el-menu-item index="4"><router-link to="/person">我的客服</router-link></el-menu-item>
+				<el-menu-item index="6" class="w-a1" ><router-link to="/login">登录</router-link></el-menu-item>
+				<el-menu-item index="7" ><router-link to="register">注册</router-link></el-menu-item>
 
 		</el-menu>
   </div>
@@ -35,7 +35,9 @@ export default {
 
 <style scoped lang="less">
 	@header-color:#22d783;
-	
+	.hello a{
+		text-decoration:none;
+	}
 	.el-menu.el-menu--horizontal{
 		background-color:@header-color;
 		
