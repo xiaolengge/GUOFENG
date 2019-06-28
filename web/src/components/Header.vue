@@ -8,6 +8,7 @@
 				<el-menu-item index="4">我的客服</el-menu-item>
 				<el-menu-item index="6" class="w-a1" >登录</el-menu-item>
 				<el-menu-item index="7" >注册</el-menu-item>
+
 		</el-menu>
   </div>
 </template>

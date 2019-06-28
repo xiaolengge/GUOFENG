@@ -28,10 +28,25 @@
 					id:'',
 					value:3.5,
 					list:[
-						{id:1,img:'http://img5.imgtn.bdimg.com/it/u=1226649064,244935913&fm=26&gp=0.jpg',name:'吮指原味鸡',peifang:'炸鸡一块',jiage:'99',fenshu:'4.5'},
+						// {id:1,img:'http://img5.imgtn.bdimg.com/it/u=1226649064,244935913&fm=26&gp=0.jpg',name:'吮指原味鸡',peifang:'炸鸡一块',jiage:'99',fenshu:'4.5'},
 					]
 				}
 			},
+			created(){
+				 this.axios.post('/api/huoqu3').then((response) => {
+				    console.log(response.data);
+					
+					response.data.forEach((val,key) => {
+						// alert(response.data[key].fenshu)
+						if(response.data[key].fenshu !==null || undefined){
+							this.list.push(response.data[key]);
+						}				
+					})
+				  })
+				  .catch(function (error) {
+				    console.log(error);
+				  });
+			}
 		}
 		
 </script>

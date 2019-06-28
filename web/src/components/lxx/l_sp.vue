@@ -45,7 +45,7 @@
 			  desc: ''
 			},
 			list:[
-				{id:1,name:'qq',content:'hhhhhhhhh',zan:'123',cai:'32',head:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561214514058&di=1c04244564b81e6deff057bee6bc173f&imgtype=0&src=http%3A%2F%2Fi5.hexunimg.cn%2F2015-06-02%2F176393877.jpg'},
+				// {id:1,name:'qq',content:'hhhhhhhhh',zan:'123',cai:'32',head:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561214514058&di=1c04244564b81e6deff057bee6bc173f&imgtype=0&src=http%3A%2F%2Fi5.hexunimg.cn%2F2015-06-02%2F176393877.jpg'},
 			]
 		  };
 		},
@@ -55,6 +55,17 @@
 		  onSubmit() {
 			console.log('submit!');
 		  }
+		},
+		created(){
+			 this.axios.post('/api/pinlun').then((response) => {
+			    console.log(response.data);
+				response.data.forEach((val,key) => {
+					this.list.push(response.data[key]);				
+				})
+			  })
+			  .catch(function (error) {
+			    console.log(error);
+			  });
 		}
 	  }
 </script>
