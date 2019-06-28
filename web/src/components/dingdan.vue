@@ -28,19 +28,20 @@
 						<div class="w-ddan-k">
 							<table class="w-biaoge">
 								<tr>
-									<td class="w-biaoge-a">商品</td>
-									<td class="w-biaoge-b">份数</td>
-									<td class="w-biaoge-c">小计</td>
+									<td class="w-biaoge-a" v-for="item in items">{{item.name}}</td>
+									
 								</tr>
-									<tr>
-									<td class="w-biaoge-a">蛋炒饭</td>
+									<tr  v-for="(item,aa) in one" :key="item.id">
+									<td class="w-biaoge-a" >{{item.name}}</td>
 									<td class="w-biaoge-b"><el-input-number v-model="num" @change="handleChange" :min="1" :max="10" label="描述文字"></el-input-number></td>
-									<td class="w-biaoge-c">20元</td>
+									<td class="w-biaoge-c">{{item.danjia}}元</td>
+									<td class="w-biaoge-c">{{item.jine}}元</td>
 								</tr>
-									<tr>
-									<td class="w-biaoge-a">煎鸡蛋</td>
+									<tr v-for="(item,bb) in tow" :key="item.id">
+									<td class="w-biaoge-a">{{item.name}}</td>
 									<td class="w-biaoge-b"><el-input-number v-model="nup" @change="handleChange" :min="1" :max="10" label="描述文字"></el-input-number></td>
-									<td class="w-biaoge-c">3元</td>
+									<td class="w-biaoge-c">{{item.danjia}}元</td>
+									<td class="w-biaoge-c">{{item.jine}}元</td>
 								</tr>
 								
 							</table>
@@ -55,19 +56,20 @@
 						<div class="w-ddan-k">
 							<table class="w-biaoge">
 								<tr>
-									<td class="w-biaoge-a">商品</td>
-									<td class="w-biaoge-b">份数</td>
-									<td class="w-biaoge-c">小计</td>
+									<td v-for="item in items" class="w-biaoge-a">{{item.name}}</td>
+								
 								</tr>
 									<tr>
 									<td class="w-biaoge-a">{{spingb}}</td>
 									<td class="w-biaoge-b"><el-input-number v-model="num" @change="handleChange" :min="1" :max="10" label="描述文字"></el-input-number></td>
-									<td class="w-biaoge-c">{{jine}} {{yuan}}</td>
+									<td class="w-biaoge-c">{{danjia}}元</td>
+									<td class="w-biaoge-c">{{jine}}元</td>
 								</tr>
 									<tr>
 									<td class="w-biaoge-a">{{spinga}}</td>
 									<td class="w-biaoge-b"><el-input-number v-model="nup" @change="handleChange" :min="1" :max="10" label="描述文字"></el-input-number></td>
-									<td class="w-biaoge-c">{{jine}} {{yuan}}</td>
+										<td class="w-biaoge-c">{{danjiaa}}元</td>
+									<td class="w-biaoge-c">{{jer}}元</td>
 								</tr>
 								
 							</table>
@@ -151,20 +153,28 @@
 	import axios from 'axios'
 	 export default {
 		data() {
-      return {
-		
+			
+       return {
+		items:[
+			{name:'商品'},
+			{name:'份数'},
+			{name:'单价'},
+			{name:'小计'}
+		],
+		one:[
+			{name:'蛋炒饭',danjia:20,jine:20}
+		],
+		tow:[
+			{name:'凉面',danjia:10,jine:10}
+		],
+			
+	
 		  handleChange:'',
         tabPosition: 'left',
 				src: 'https://shadow.elemecdn.com/faas/desktop/media/img/default-avatar.38e40d.png?imageMogr2/format/webp/quality/85',
-				num: 1,
-				nup: 1,
-			jbi:0,
-			ge:' 个',
-			yue:0,
-			yuan:'元',
-			spingb:'蛋炒饭',
-			spinga:'煎鸡蛋',
-			jine:'30',
+				
+				num:1,
+				nup:1,
 			input:'',
 			 mapJson:'/chengshi.json',
       province:'',
@@ -176,10 +186,11 @@
       city:'',
       block:'',
 
-		
+	kongshuzu:[],
       };
     },
 	 methods:{
+		
     // 加载china地点数据，三级
       getCityData:function(){
         var that = this
@@ -254,7 +265,8 @@
     },
     created:function(){
       this.getCityData()
-   }
+   },
+  
 
 	
   };
@@ -279,7 +291,7 @@
 		border-bottom: 1px solid #dcdfe6;
 	  padding: 15px;
 	  max-width: 250px;
-		width: 50%;
+		width: 30%;
 		text-align: center;
 	}
 	.w-biaoge-c{

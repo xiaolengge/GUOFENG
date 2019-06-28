@@ -35,7 +35,7 @@
 		spjs:[
 			// {id:1,img:"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=4179754330,2304355023&fm=15&gp=0.jpg",name:'炸鸡',danjia:'1',num:1,zj:''},
 		],
-      }
+      } 
     },
 	methods: {
 		sss() {

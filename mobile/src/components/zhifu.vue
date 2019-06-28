@@ -8,6 +8,8 @@
 		
 		<div>
 			<mt-radio
+			align="right" 
+			
 			  title="支付方式"
 			  v-model="value"
 			  :options="['美团支付', '微信支付', '支付宝支付']">
