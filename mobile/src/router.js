@@ -8,6 +8,7 @@ import wode from './components/wode.vue'
 import shezhi from './components/shezhi.vue'
 import tijiaoddan from './components/tijiaoddan.vue'
 import zhifu from './components/zhifu.vue'
+import chenggong from './components/chenggong.vue'
 Vue.use(Mint);
 
 
@@ -18,9 +19,10 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
 		{
-		path:'/',
+		path:'/index',
 		name:'index',
 		component:index
+		
 		},
 		{
 		path:'/index',
@@ -56,6 +58,11 @@ export default new Router({
 		path:'/zhifu',
 		name:'zhifu',
 		component:zhifu
+		},
+		{
+		path:'/chenggong',
+		name:'chenggong',
+		component:chenggong
 		},
 		
 		

@@ -59,11 +59,12 @@
 　　　　return {
 		namea:'三明治',
 	nameb:'麻辣小龙虾',
-	jq:'100',
+	jq:'100', 
 	baozf:'3',
 	peisong:'4',
+	flag:false,
 　　　　　　isShowAddress:false,
-			flag:false,
+			
 　　　　　　myAddressSlots: [
 　　　　　　　　{
 　　　　　　　　　　flex: 1,

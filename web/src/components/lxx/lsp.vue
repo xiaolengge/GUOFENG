@@ -1,7 +1,7 @@
 <template>
 	<div class="sp_nav">
 		<ul class="sp_list">
-			<li v-for="(item,index) in list" :key="item.id">
+			<li v-for="(item,index) in list" :key="item.id" class="w-yangshi">
 				
 				<div class="sp_img"><img :src="item.img" alt=""></div>
 				<div class="sp_name">
@@ -37,6 +37,9 @@
 </script>
 
 <style lang="less">
+	.w-yangshi:hover{
+		border: 2px solid #22d783;
+	}
 	.sp_list{
 		display: flex;
 		list-style:none;

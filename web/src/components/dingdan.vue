@@ -94,7 +94,50 @@
 				<el-tab-pane label="收货地址">
 					<div class="w-ddan-n">
 						<div class="w-ddan-j"><span>收货地址</span></div>
-						<div class="w-ddan-k"></div>
+						<div class="w-ddan-k">
+							<div class="linkage">
+							<el-select
+							  v-model="sheng"
+							  @change="choseProvince"
+							  placeholder="省级地区">
+							  <el-option
+								v-for="item in province"
+								:key="item.id"
+								:label="item.value"
+								:value="item.id">
+							  </el-option>
+							</el-select>
+							<el-select
+							  v-model="shi"
+							  @change="choseCity"
+							  placeholder="市级地区">
+							  <el-option
+								v-for="item in shi1"
+								:key="item.id"
+								:label="item.value"
+								:value="item.id">
+							  </el-option>
+							</el-select>
+							<el-select
+							  v-model="qu"
+							  @change="choseBlock"
+							  placeholder="区级地区">
+							  <el-option
+								v-for="item in qu1"
+								:key="item.id"
+								:label="item.value"
+								:value="item.id">
+							  </el-option>
+							</el-select>
+						  </div>
+				
+						</div>
+						<div class="w-ddan-j"><span>详细地址</span></div>
+						
+						<div>
+							<el-input v-model="input" placeholder="请输入详细地址"></el-input>
+						</div>
+						
 					</div>
 				</el-tab-pane>
 			  </el-tabs>
@@ -105,9 +148,12 @@
 </template>
 
 <script>
+	import axios from 'axios'
 	 export default {
-    data() {
+		data() {
       return {
+		
+		  handleChange:'',
         tabPosition: 'left',
 				src: 'https://shadow.elemecdn.com/faas/desktop/media/img/default-avatar.38e40d.png?imageMogr2/format/webp/quality/85',
 				num: 1,
@@ -118,10 +164,98 @@
 			yuan:'元',
 			spingb:'蛋炒饭',
 			spinga:'煎鸡蛋',
-			jine:'30'
+			jine:'30',
+			input:'',
+			 mapJson:'/chengshi.json',
+      province:'',
+      sheng: '',
+      shi: '',
+      shi1: [],
+      qu: '',
+      qu1: [],
+      city:'',
+      block:'',
+
 		
       };
     },
+	 methods:{
+    // 加载china地点数据，三级
+      getCityData:function(){
+        var that = this
+        axios.get(that.mapJson).then(function(response){
+          if (response.status==200) {
+            var data = response.data
+            that.province = []
+            that.city = []
+            that.block = []
+            // 省市区数据分类
+            for (var item in data) {
+              if (item.match(/0000$/)) {//省
+                that.province.push({id: item, value: data[item], children: []})
+              } else if (item.match(/00$/)) {//市
+                that.city.push({id: item, value: data[item], children: []})
+              } else {//区
+                that.block.push({id: item, value: data[item]})
+              }
+            }
+            // 分类市级
+            for (var index in that.province) {
+              for (var index1 in that.city) {
+                if (that.province[index].id.slice(0, 2) === that.city[index1].id.slice(0, 2)) {
+                  that.province[index].children.push(that.city[index1])
+                }
+              }
+            }
+            // 分类区级
+            for(var item1 in that.city) {
+              for(var item2 in that.block) {
+                if (that.block[item2].id.slice(0, 4) === that.city[item1].id.slice(0, 4)) {
+                  that.city[item1].children.push(that.block[item2])
+                }
+              }
+            }
+          }
+          else{
+            console.log(response.status)
+          }
+        }).catch(function(error){console.log(typeof+ error)})
+      },
+      // 选省
+      choseProvince:function(e) {
+        for (var index2 in this.province) {
+          if (e === this.province[index2].id) {
+             console.log(this.province[index2].id)//你选择的省级编码
+            console.log(this.province[index2].value)//省级编码 对应的汉字 
+            this.shi1 = this.province[index2].children
+            this.shi = this.province[index2].children[0].value
+            this.qu1 =this.province[index2].children[0].children
+            this.qu = this.province[index2].children[0].children[0].value
+            this.E = this.qu1[0].id
+          }
+        }
+      },
+      // 选市
+      choseCity:function(e) {
+        for (var index3 in this.city) {
+          if (e === this.city[index3].id) {
+            this.qu1 = this.city[index3].children
+            this.qu = this.city[index3].children[0].value
+            this.E = this.qu1[0].id
+            // console.log(this.E)
+          }
+        }
+      },
+      // 选区
+      choseBlock:function(e) {
+        this.E=e;
+        // console.log(this.E)
+      },
+    },
+    created:function(){
+      this.getCityData()
+   }
+
 	
   };
 </script>
@@ -130,6 +264,9 @@
 	.w-biaoge{
     width: 100%;
    
+	}
+	.el-select{
+		width: 219px;
 	}
 	.w-biaoge-a{
 		border-bottom: 1px solid #dcdfe6;
