@@ -34,7 +34,7 @@
 		},
 		methods: {
 			tianjia() {
-				var _data =	{id:3,name:'锅火',peiliao:'火',img:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561650936822&di=702e404198a6ff03b6917ee40ff5e999&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201806%2F10%2F20180610231206_bkdfd.jpg'};
+				var _data =	{id:1,value:'3.7',dmian:'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=630679254,2299163390&fm=26&gp=0.jpg',dmin:'重庆鸡公煲',fyong:1,};
 				this.axios.post('/api',_data,function(re){})
 			}
 		},
