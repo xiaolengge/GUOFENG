@@ -1,7 +1,7 @@
 <template>
-	<div class="w-sdian-a">
-				<div class="w-sdian" v-for="item in list" :key="item.id">
-					<!-- <router-link to="/lsp"></router-link> -->
+	<div class="w-sdian-a">	
+		<router-link to="/lsp" v-for="item in list" :key="item.id">
+			<div class="w-sdian">
 					<div class="ttimg"><img :src="item.dmian" alt=""></div>
 					<div class="w-sdian-b">
 						<span class="w-sdian-c">{{item.dmin}}</span>
@@ -14,8 +14,8 @@
 							</el-rate>
 							<span class="w-sdian-d">配送费￥{{item.fyong}}</span>
 					</div>
-				</div>	
-		
+			</div>	
+		</router-link>
 	</div>
 </template>
 
@@ -26,7 +26,6 @@ export default {
       return {
 		  value:1.1,
 		list:[
-			// {id:1,value:'3.7',dmian:'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=630679254,2299163390&fm=26&gp=0.jpg',dmin:'重庆鸡公煲',fyong:1,}
 		]
       }
     },

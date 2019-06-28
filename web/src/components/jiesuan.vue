@@ -1,5 +1,14 @@
 <template>
 	<div class="ldd">
+		<div class="menban" v-show="mubu" @click="mubu=!mubu">
+			<div class="mbipt">
+				<div class="fipt">
+					姓名：<el-input placeholder="请输入姓名" v-model="inputname" clearable></el-input>
+					地址：<el-input placeholder="请输入地址" v-model="inputdz" clearable></el-input>
+					<el-button type="primary" @click="cfk">修改</el-button>
+				</div>
+			</div>
+		</div>
 		<div class="ddhead">
 			<div class="img"><img src="../assets/chifan.png" alt=""></div>
 			<div>订单结算</div>
@@ -9,8 +18,9 @@
 				<span class="name">地址</span>
 				<div class="xq" v-for="itm in fk" :key='itm.id'>
 					<div>{{itm.name}}</div>
-					<div class="ddz">{{itm.diz}}</div>
+					<div class="ddz">{{itm.dizhi}}</div>
 				</div>
+				<div class="xz" @click="mubu=!mubu">新增收货地址</div>
 			</div>
 			<div class="ddan">
 				<div class="name">订单</div>
@@ -54,8 +64,11 @@
 			return{
 				show:true,
 				zzzj:0,
+				inputname:'',
+				inputdz:'',
+				mubu:false,
 				fk:[
-					{id:1,name:'陈一只',diz:'青羊区'},
+					// {id:1,name:'陈一只',diz:'青羊区'},
 				],
 				spxq:[
 					{id:1,spname:"炸鸡",danjia:'12',num:'1',xj:'1'},
@@ -63,14 +76,31 @@
 			}	
 		},
 		methods: {
-			
+			cfk(){
+				console.log(this)
+				axios.post('/api/cfk',{name:this.inputname,dizhi:this.inputdz}).then((response) => {
+				    console.log(response);			
+				  })
+				  .catch(function (error) {
+				    console.log(error);
+				  });
+				  this.mubu = !this.mubu;
+			}
 	},
 	created:function(){
-		console.log(this.spxq)
+		// console.log(this.spxq)
 		this.spxq.forEach((key,val) => {
-			this.zzzj+=parseInt(this.spxq[val].xj);
-			
-		})
+			this.zzzj+=parseInt(this.spxq[val].xj);		
+		});
+		this.axios.get('/api/cfkq').then((response) => {
+		   console.log(response.data);
+			response.data.forEach((val,key) => {
+			this.fk.push(response.data[key]);
+							})
+		 })
+		 .catch(function (error) {
+		   console.log(error);
+		 });
 	},
 	}
 </script>
@@ -82,6 +112,38 @@
 		// align-items: ;
 		justify-content: center;
 		flex-wrap: wrap;
+		.xz{
+			font-size: 14px;
+			position: absolute;
+			right: 5px;
+			bottom: 5px;
+			color: #1296db
+		}
+		.menban{
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			z-index: 1000;
+			background: rgba(0, 0,0, .3);
+			.mbipt{
+				width: 70%;
+				height: 70%;
+				background: #fff;
+				margin: auto;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				.fipt{
+					width: 80%;
+					display: flex;
+					justify-content: center;
+					flex-wrap: wrap;
+					.el-button{
+						margin: 10px auto;
+					}
+				}
+			}
+		}
 		.ddhead{
 			height: 70px;
 			width: 100%;
@@ -117,6 +179,7 @@
 				align-items: center;
 				border: 1px solid #eee;
 				height: 80px;
+				position: relative;
 				.name{
 					font-size: 26px;
 					color: #333;

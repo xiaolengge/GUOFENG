@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/chifanfan',{useNewUrlParser:true},function(err){
+mongoose.connect('mongodb://192.168.0.179:27017/chifanfan',{useNewUrlParser:true},function(err){
 	if(err){
 		console.log('连接失败');
 	}else{
@@ -52,6 +52,11 @@ let  zc  = mongoose.Schema({
 	username:String,
 	password:String,
 })
+let  cfk  = mongoose.Schema({
+	name:String,
+	dizhi:String,
+})
+const CK = mongoose.model('CK',cfk);
 //定义一个首页店铺表
 const Idp = mongoose.model('Idp',index_dp);
 // 定义一个优惠表
@@ -172,6 +177,27 @@ router.post('/pinlun', function(req, res, next) {
 router.get('/inx', function(req, res, next) {
 		const obj ={};
 		Idp.find(obj,(err,docs) =>{
+			if(err){
+				console.log('查询失败')
+			}else{
+				res.send(docs);
+			}
+		})
+});
+router.post('/cfk', function(req, res, next) {
+		var new_ren =new CK({name:req.body.name,dizhi:req.body.dizhi});
+		new_ren.save(function(err,succ){
+				if(err){
+					console.log('保存失败')
+			}else{
+					console.log('保存成功')
+					console.log(succ)
+				}
+			});
+});
+router.get('/cfkq', function(req, res, next) {
+		const obj ={};
+		CK.find(obj,(err,docs) =>{
 			if(err){
 				console.log('查询失败')
 			}else{
