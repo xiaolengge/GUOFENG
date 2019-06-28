@@ -5,9 +5,9 @@
 				<el-menu-item index="1"><router-link to="/index">首页</router-link></el-menu-item>
 				<el-menu-item index="2"><router-link to="/dingdan">我的订单</router-link></el-menu-item>
 				<el-menu-item index="3" ><router-link to="/jiameng">加盟合作</router-link></el-menu-item>
-				<el-menu-item index="4">我的客服</el-menu-item>
-				<el-menu-item index="6" class="w-a1" >登录</el-menu-item>
-				<el-menu-item index="7" >注册</el-menu-item>
+				<el-menu-item index="4"><router-link to="/person">我的客服</router-link></el-menu-item>
+				<el-menu-item index="6" class="w-a1" ><router-link to="/login">登录</router-link></el-menu-item>
+				<el-menu-item index="7" ><router-link to="/register">注册</router-link></el-menu-item>
 		</el-menu>
   </div>
 </template>

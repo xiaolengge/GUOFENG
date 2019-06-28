@@ -1,0 +1,125 @@
+ <template>
+	 <div class="xlogin">
+		<div class="backlogin">
+		  <div class="login_box">
+		    <div class="title">
+					  <span>登</span>
+					  <span>录</span>
+				  </div>
+		    <div class="xlogin1">
+				 <label>用户名：</label> 
+		        <input class="myinput" type="text" placeholder="手机号/用户名" v-model="username" />
+		      </div>
+		    <div class="xlogin1">
+				<label> 密&nbsp&nbsp&nbsp 码：</label>
+		      <input @keyup.13="login" class="myinput" type="password" placeholder="密码" v-model="password" />
+		    </div>
+		    <div class="login_other xlogin1">
+			  <span>
+				<input type="checkbox" id="remenberme" />
+				<label for="remenberme">记住我</label>  
+			  </span>
+		      <a href="javascript:;">找回密码</a>
+		    </div>
+		    <button :disabled="disablebtn" class="login" @click="login">{{loginText}}</button>
+			<br>
+			<button :disabled="disablebtn" class="login" @click="backRegister">注册</button>
+		  </div>
+		</div>
+	 </div>
+    </template>
+    <script>
+  import {
+    Toast
+  } from 'mint-ui';
+  export default {
+    name: 'backlogin',
+    data() {
+      return {
+        username: "admin",
+        password: "123456",
+        disablebtn: false,
+        loginText: "登录"
+      }
+    },
+    methods: {
+	  backLogin() {
+        this.$router.replace('/register')
+      },
+      login() {
+        var vm = this;
+        this.disablebtn = true;
+        this.loginText = "登陆中";
+        this.$reqs.post('/users/login', {
+          username: this.username,
+          password: this.password
+        }).then(function (res) {
+          if (res.data.status === true) {
+            vm.$router.replace('/home');
+          } else {
+            //弹窗
+            Toast({
+              message: res.data.errMsg,
+            });
+            vm.disablebtn = false;
+            vm.loginText = "登陆";
+          }
+        }).catch(function (err) {
+          vm.disablebtn = false;
+          vm.loginText = "登陆";
+        })
+      }
+    }
+  }
+</script>
+<style scope>
+	.title span{
+		font-size:20px;
+		padding:1.875rem;
+	}
+    .xlogin{
+	   height:100%;
+		width:100%;
+		text-align:center;
+		background:url(../assets/img/login.jpg);
+		repeat: no-repeat;
+		background-attachment:fixed;
+		background-position: center;
+		background-size:150% 100%;
+		position: absolute;
+		left:0px;
+   } 
+    .xlogin1{
+	   padding:0.625rem;
+   }
+    .backlogin{
+	    position:relative;
+		top:20%;
+		width:20rem;
+		margin:0 auto;	
+   }
+    .myinput{
+		height:1.875rem;
+		width:12.5rem;
+   }
+    .login_other{
+		font-size:14px;
+	}
+	.login_other span{
+		float:left;
+		padding-left:5rem;
+	}
+	.login_other a{
+		text-decoration:none;
+		color: #000;
+	}
+	.login{
+		font-size:18px;
+		border-radius:0.3125rem;
+		height:2.25rem;
+		width:13rem;
+		margin:0.25rem 0 0 4.25rem;
+		background-color:rgb(73,210,67);
+		border-color:rgb(73,210,67);
+	}
+</style>
