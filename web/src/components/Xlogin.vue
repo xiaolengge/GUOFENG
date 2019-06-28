@@ -6,14 +6,12 @@
 			<div></div>
 		</div>
         <div class="ul-login">
-            <div class="item-login" ><input v-model="username"  class="input-login" type="text" placeholder="请输入用户名" />
-
-            </div>
+            <div class="item-login" ><input v-model="username"  class="input-login" type="text" placeholder="请输入用户名" /></div>
             <div class="item-login"><input v-model="pwd"  class="input-login" type="password" placeholder="请输入登录密码" /></div>
         </div>
 				<div class="login1">忘记密码？</div>
         <div class="btn-box">
-            <button class="btn btn-login" @click="submit()">{{stateWord}}</button>
+            <button class="btn btn-login" @click="login">{{stateWord}}</button>
         </div>
 				<div class="login2">
 					<div>第三方登录</div>
@@ -22,7 +20,7 @@
 						<span><img src="../assets/QQ.jpg" alt=""></span>
 						<span><img src="../assets/weibo.jpg" alt=""></span>
 					</div>
-					<div>立即注册</div>
+					<div @click="login">立即注册</div>
 				</div>
     </div>
 	</form>
@@ -45,20 +43,24 @@ export default {
     },
     watch: {
     },
-    submit(){
-        },
 	methods:{
         login(){
-            this.$axios.post(this.HOST+'/api/login',{username:this.username,password:this.pwd})
-            .then(result=>{
-                console.log(result.data)
-                this.msg = result.data.msg
+           this.axios.get('/api/dlu').then((response) => {
+           		console.log(response)
+           				response.data.forEach((val,key) =>{
+           					if((response.data[key].username==this.username)&(response.data[key].password==this.pwd)){
+           						alert('登录成功')
+           					}else{
+								console.log(response.data[key].password)
+           						// alert('登录失败')
+           					}
+           				})			
             })
-            .catch(err=>{
-                console.log(err)
-            })
+            .catch(function (error) {
+              console.log(error);
+            });
         }
-    }
+    },
 };    
 </script>
 

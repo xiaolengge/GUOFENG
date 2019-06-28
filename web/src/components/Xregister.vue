@@ -84,13 +84,12 @@ export default {
 			}
 		},
 		register() {
-			this.verify();
-			this.$axios
-				.post(this.HOST + '/api/register', { username: this.username, password: this.pwd })
-				.then(result => {
-					this.msg = result.data.msg;
-				})
-				.catch(err => {});
+			this.axios.post('/api/zhuche',{ username: this.username, password: this.pwd }).then((response) => {
+					console.log(response)			
+			 })
+			 .catch(function (error) {
+			   console.log(error);
+			 });
 		}
 	}
 };
