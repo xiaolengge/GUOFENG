@@ -20,7 +20,7 @@
 			id='w-sousuo'
 			v-model="input2">
 			</el-input>
-			<button @click="tianjia">1111</button>
+			<!-- <button @click="tianjia">1111</button> -->
 		</div>
 	</div>
 </template>

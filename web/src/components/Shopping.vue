@@ -1,6 +1,6 @@
 <template>
 	<div class="Shop" v-bind:class="{ active: show }">
-		<div class="tit" @click='show=!show'>
+		<div class="tit" @click='huo'>
 			<div class="gwc">
 				<span class="">购物车</span>
 				<span class="rm">[清空]</span>
@@ -9,9 +9,9 @@
 		<div class="con">
 			<ul class="jscon">
 				<li v-for="(item,index) in spjs" :key="item.id" >
-					<div class="img"><img :src="item.img" alt=""></div>
+					<!-- <div class="img"><img :src="item.img" alt=""></div> -->
 					<div class="naem">{{item.name}}</div>
-					<div class="danjia">¥{{item.danjia}}</div>
+					<div class="danjia">¥{{item.jiage}}</div>
 					<el-input-number size="mini" v-model="item.num" @change="sss" :min='0'></el-input-number>
 					<div class="zongjia">¥{{item.zj}}</div>
 					<div class="del">移除</div>
@@ -20,7 +20,7 @@
 		</div>
 		<div class="foot">
 			<div class="js">总价：¥{{zzzj}}</div>
-			<el-button type="primary"><router-link to='/jiesuan'>去结算</router-link></el-button>
+			<router-link to='/jiesuan'><el-button type="primary">去结算</el-button></router-link>
 		</div>
 	</div>
 </template>
@@ -45,10 +45,22 @@
 				this.zzzj+=parseInt(this.spjs[val].zj);
 			})
 		},
+		huo(){
+			axios.get('/api/gouhuo').then((response) =>{
+				console.log(response)
+				response.data.forEach((val,key) => {
+					// alert(response.data[key].fenshu)
+					if(response.data[key].fenshu !==null || undefined){
+						this.spjs.push(response.data[key]);
+					}				
+				})
+			})
+			this.show=!this.show
+		}
 	},
 	created(){
 		this.spjs.forEach((key,val) => {
-			this.spjs[val].zj=this.spjs[val].danjia*this.spjs[val].num;
+			this.spjs[val].zj=this.spjs[val].jiage*this.spjs[val].num;
 			this.zzzj+=parseInt(this.spjs[val].zj);
 		})
 	}

@@ -18,46 +18,46 @@
 		<div>
 			<mt-tab-container v-model="selected" class="w-dd-j">
 			  <mt-tab-container-item id="1" style="display: block;">
-				<div class="w-dd-d" >
+				<div class="w-dd-d" v-for="ite in  spjs" :key="ite.id">
 					<div  class="w-dd-e" >
-						<div class="w-dd-f">{{name}}</div>
+						<div class="w-dd-f">{{ite.name}}</div>
 						<div class="w-dd-g">支付成功</div>
 					</div>
 					<div class="w-dd-h">
-						<div><img src="../assets/img/xiaolongxia.png" alt=""></div>
+						<div><img :src="ite.img" alt=""></div>
 						<div class="w-dd-i">
-							<span>{{name}}</span><br>
-							<span>价钱:￥{{jq}}</span>
+							<span>{{ite.name}}</span><br>
+							<span>价钱:￥{{ite.jiage}}</span>
 						</div>
 					</div>
 				</div>
 			  </mt-tab-container-item>
 			  <mt-tab-container-item id="2">
-				<div class="w-dd-d" >
+				<div class="w-dd-d"  v-for="ite in  spjs" :key="ite.id">
 					<div  class="w-dd-e" >
-						<div class="w-dd-f">{{name}}</div>
+						<div class="w-dd-f">{{ite.name}}</div>
 						<div class="w-dd-g">待支付</div>
 					</div>
 					<div class="w-dd-h">
-						<div><img src="../assets/img/xiaolongxia.png" alt=""></div>
+						<div><img :src="ite.img" alt=""></div>
 						<div class="w-dd-i">
-							<span>{{name}}</span><br>
-							<span>价钱:￥{{jq}}</span>
+							<span>{{ite.name}}</span><br>
+							<span>价钱:￥{{ite.jiage}}</span>
 						</div>
 					</div>
 				</div>
 			  </mt-tab-container-item>
 			  <mt-tab-container-item id="3">
-				<div class="w-dd-d" >
+				<div class="w-dd-d"  v-for="ite in  spjs" :key="ite.id">
 					<div  class="w-dd-e" >
-						<div class="w-dd-f">{{name}}</div>
+						<div class="w-dd-f">{{ite.name}}</div>
 						<div class="w-dd-g">待收货</div>
 					</div>
 					<div class="w-dd-h">
-						<div><img src="../assets/img/xiaolongxia.png" alt=""></div>
+						<div><img :src="ite.img" alt=""></div>
 						<div class="w-dd-i">
-							<span>{{name}}</span><br>
-							<span>价钱:￥{{jq}}</span>
+							<span>{{ite.name}}</span><br>
+							<span>价钱:￥{{ite.jiage}}</span>
 						</div>
 					</div>
 				</div>
@@ -90,11 +90,21 @@
 	    return {
 	    selected:'',
 		namea:'三明治',
-		name:'麻辣小龙虾',
+		// name:'麻辣小龙虾',
 		mb:'小面包',
-		jq:'100'
-		
+		jq:'100',
+		spjs:[
+			
+		]
 	    }
+	  },
+	  created(){
+		  axios.get('/api/gouhuo').then((response) =>{
+		  	console.log(response)
+		  	response.data.forEach((val,key) => {
+		  			this.spjs.push(response.data[key]);
+		  	})
+		  })
 	  }
 	}
 </script>

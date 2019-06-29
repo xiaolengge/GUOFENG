@@ -33,10 +33,10 @@
 							<div>小计</div>
 						</li>
 						<li v-for="itm in spxq" :key='itm.id'>
-							<div>{{itm.spname}}</div>
-							<div>¥{{itm.danjia}}</div>
+							<div>{{itm.name}}</div>
+							<div>¥{{itm.jiage}}</div>
 							<div>{{itm.num}}份</div>
-							<div>¥{{itm.xj}}</div>
+							<div>¥{{itm.jiage}}</div>
 						</li>
 					</ul>
 				</div>
@@ -71,7 +71,7 @@
 					// {id:1,name:'陈一只',diz:'青羊区'},
 				],
 				spxq:[
-					{id:1,spname:"炸鸡",danjia:'12',num:'1',xj:'1'},
+					// {id:1,spname:"炸鸡",danjia:'12',num:'1',xj:'1'},
 				]
 			}	
 		},
@@ -87,13 +87,14 @@
 				  this.mubu = !this.mubu;
 			}
 	},
-	created:function(){
-		// console.log(this.spxq)
-		this.spxq.forEach((key,val) => {
-			this.zzzj+=parseInt(this.spxq[val].xj);		
-		});
+	created(){
+		
+		// this.spxq.forEach((key,val) => {
+		// 	// this.zzzj+=parseInt(this.spxq[val].jiage);	
+		// 	console.log(this)	
+		// });  
 		this.axios.get('/api/cfkq').then((response) => {
-		   console.log(response.data);
+		   // console.log(response.data);
 			response.data.forEach((val,key) => {
 			this.fk.push(response.data[key]);
 							})
@@ -101,6 +102,14 @@
 		 .catch(function (error) {
 		   console.log(error);
 		 });
+		 this.axios.get('/api/gouhuo').then((response) => {
+		    // console.log(response.data);
+		 	response.data.forEach((val,key) => {
+		 	this.spxq.push(response.data[key]);
+			this.zzzj+=parseInt(this.spxq[key].jiage);	
+		 	})
+		  })
+		  
 	},
 	}
 </script>

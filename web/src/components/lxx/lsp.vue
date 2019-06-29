@@ -1,7 +1,7 @@
 <template>
 	<div class="sp_nav">
 		<ul class="sp_list">
-			<li v-for="(item,index) in list" :key="item.id" class="w-yangshi">
+			<li v-for="(item,index) in list" :key="item.id" class="w-yangshi" @click="addg(item.id)">
 				
 				<div class="sp_img"><img :src="item.img" alt=""></div>
 				<div class="sp_name">
@@ -32,10 +32,18 @@
 					]
 				}
 			},
+			methods:{
+				addg(id){
+					console.log(this.list[id])
+					axios.post('/api/gouadd',this.list[id]).then((response) =>{
+						console.log(response)
+					})
+					
+				},
+
+			},
 			created(){
 				 this.axios.post('/api/huoqu3').then((response) => {
-				    console.log(response.data);
-					
 					response.data.forEach((val,key) => {
 						// alert(response.data[key].fenshu)
 						if(response.data[key].fenshu !==null || undefined){
@@ -46,7 +54,10 @@
 				  .catch(function (error) {
 				    console.log(error);
 				  });
-			}
+				this.getParams()
+			},
+
+	
 		}
 		
 </script>

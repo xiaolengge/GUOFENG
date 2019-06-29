@@ -80,20 +80,19 @@
 		</div>
 		
 		<div>
-			<div class="w-lb-h"><router-link to="/goods">附近商家</router-link></div>
-			<div class="w-lb-i">
-				<div><img :src="dmian" alt="" class="w-lb-j" ></div>
+			<div class="w-lb-h">附近商家</div>
+			<div class="w-lb-i" v-for="item in list" :key='item.id' >
+				<div><img :src="item.dmian" alt="" class="w-lb-j" ></div>
 				<div class="w-lb-n">
-					<span class="w-lb-k">{{name}}</span> <br>
-					<span class="w-lb-l">☆{{xing}}</span>
-					<span class="w-lb-m"> 月售{{yueshou}}</span><br>
+					<span class="w-lb-k">{{item.dmin}}</span> <br>
+					<span class="w-lb-l">☆{{item.value}}</span>
+					<span class="w-lb-m"> 月售{{item.yue}}</span><br>
 					<div class="w-lb-p">
-						<span class="w-lb-m">配送￥{{peisong}}</span>
+						<span class="w-lb-m">配送￥{{item.fyong}}</span>
 						<span class="w-lb-o">吃饭饭专送</span>
 					</div>
 					
-				</div>
-				
+				</div>	
 			</div>
 			
 		</div>
@@ -106,14 +105,27 @@
 	 export default {
 	data() {
 	  return {
-		dmian:sjimg,
-		name:'煎饼侠',
-		yueshou:'1000',
-		xing:'4.4',
-		peisong:'2.5',
-		
+		// dmian:sjimg,
+		// name:'煎饼侠',
+		// yueshou:'1000',
+		// xing:'4.4',
+		// peisong:'2.5',
+		value:'',
+		list:[]
 	  };
 	},
+	created(){
+		 this.axios.get('/api/inx').then((response) => {
+		    console.log(this.list);
+			response.data.forEach((val,key) => {
+				this.list.push(response.data[key]);	
+				// this.value = response.data[key].value
+			})
+		  })
+		  .catch(function (error) {
+		    console.log(error);
+		  });
+	}
 	}
 </script>
 
@@ -192,8 +204,8 @@
 		overflow: hidden;
 	}
 	.w-lb-a{
-		width: 400px;
-		height: 120px;
+		width:100%;
+		height: 100%;
 	}
 
 	.mint-searchbar-inner{

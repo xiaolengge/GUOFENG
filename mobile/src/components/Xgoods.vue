@@ -1,7 +1,6 @@
 <template>
   <div>
-    <div class="head">
-      
+    <div class="head"> 
     </div>
     <div class="content">
       <div class="shop">商品</div>
