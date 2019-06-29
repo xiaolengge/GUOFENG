@@ -15,16 +15,16 @@
 		</div>
 		
 		<div>
-			<div class="w-dd-d" >
+			<div class="w-dd-d" v-for="item in spjs" :key="item.id" >
 				<div  class="w-dd-e" >
-					<div class="w-dd-f">小龙虾</div>
+					<div class="w-dd-f">{{item.name}}</div>
 					<div class="w-dd-g">待支付</div>
 				</div>
 				<div class="w-dd-h">
-					<div><img src="../assets/img/xiaolongxia.png" alt=""></div>
+					<div><img :src="item.img" alt=""></div>
 					<div class="w-dd-i">
-						<span>{{nameb}}</span><br>
-						<span>价钱:￥{{jq}}</span>
+						<span>{{item.name}}</span><br>
+						<span>价钱:￥{{item.jiage}}</span>
 					</div>
 				</div>
 			</div>
@@ -62,6 +62,7 @@
 	jq:'100', 
 	baozf:'3',
 	peisong:'4',
+	spjs:[],
 	flag:false,
 　　　　　　isShowAddress:false,
 			
@@ -97,8 +98,14 @@
 　　　　　　myAddresscounty:'',
 　　　　}
 　　},
-　　created() {
-　　},
+　　created(){
+		  axios.get('/api/gouhuo').then((response) =>{
+		  	console.log(response)
+		  	response.data.forEach((val,key) => {
+		  			this.spjs.push(response.data[key]);
+		  	})
+		  })
+	  },
 　　methods: {
 　　　　goBack (){
 　　　　　　this.$router.go(-1)

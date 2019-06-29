@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://192.168.0.179:27017/chifanfan',{useNewUrlParser:true},function(err){
+mongoose.connect('mongodb://localhost:27017/chifanfan',{useNewUrlParser:true},function(err){
 	if(err){
 		console.log('连接失败');
 	}else{
@@ -56,6 +56,17 @@ let  cfk  = mongoose.Schema({
 	name:String,
 	dizhi:String,
 })
+//购物车骨架
+let  gwc  = mongoose.Schema({
+	id: Number,
+	name:String,
+	peifang:String,
+	img:String,
+	jiage:Number,
+	fenshu:String,
+	__v:Number,
+	_id:String
+})
 const CK = mongoose.model('CK',cfk);
 //定义一个首页店铺表
 const Idp = mongoose.model('Idp',index_dp);
@@ -69,11 +80,26 @@ const Sunz = mongoose.model('Sunz',sunzi);
 const Pin = mongoose.model('Pin',pin);
 //定义注册登录表
 const DL = mongoose.model('DL',zc);
+//定义购物车列表
+const GOU = mongoose.model('GOU',gwc);
 /* GET users listing. */
 router.post('/', function(req, res, next) {
 	
 		var idp = new Idp({id:req.body.id,value:req.body.value,dmian:req.body.dmian,dmin:req.body.dmin,fyong:req.body.fyong});
 		idp.save(function(err,succ){
+			if(err){
+				console.log('保存失败')
+			}else{
+				console.log('保存成功')
+				console.log(succ)
+			}
+		});
+		// res.send(new_cat)
+});
+//购物车列表
+router.post('/gouadd', function(req, res, next) {
+		var igwc = new GOU({id:req.body.id,fenshu:req.body.fenshu,img:req.body.img,jiage:req.body.jiage,name:req.body.name,peifang:req.body.peifang,__v:req.body.__v,_id:req.body._id,});
+		igwc.save(function(err,succ){
 			if(err){
 				console.log('保存失败')
 			}else{
@@ -198,6 +224,17 @@ router.post('/cfk', function(req, res, next) {
 router.get('/cfkq', function(req, res, next) {
 		const obj ={};
 		CK.find(obj,(err,docs) =>{
+			if(err){
+				console.log('查询失败')
+			}else{
+				res.send(docs);
+			}
+		})
+});
+//查询购物车
+router.get('/gouhuo', function(req, res, next) {
+		const obj ={};
+		GOU.find(obj,(err,docs) =>{
 			if(err){
 				console.log('查询失败')
 			}else{

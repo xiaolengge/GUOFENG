@@ -42,21 +42,12 @@
         this.$router.replace('/login')
       },
       register() {
-        var vm=this;
-        this.$reqs.post('users/register', {
-          username: this.username,
-          password: this.password
-        }).then(function (res) {
-          if (res.data.status !== true) {
-            Toast(res.data.errMsg);
-          } else {
-            let instance = Toast('注册成功，请登录!');
-            setTimeout(() => {
-              instance.close();
-              vm.$router.replace('/login');
-            }, 2000);
-          }
-        })
+      	this.axios.post('/api/zhuche',{ username: this.username, password: this.pwd }).then((response) => {
+      			console.log(response)			
+      	 })
+      	 .catch(function (error) {
+      	   console.log(error);
+      	 });
       }
     }
   }

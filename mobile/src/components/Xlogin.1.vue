@@ -47,27 +47,20 @@
         this.$router.replace('/register')
       },
       login() {
-        var vm = this;
-        this.disablebtn = true;
-        this.loginText = "登陆中";
-        this.$reqs.post('/users/login', {
-          username: this.username,
-          password: this.password
-        }).then(function (res) {
-          if (res.data.status === true) {
-            vm.$router.replace('/home');
-          } else {
-            //弹窗
-            Toast({
-              message: res.data.errMsg,
-            });
-            vm.disablebtn = false;
-            vm.loginText = "登陆";
-          }
-        }).catch(function (err) {
-          vm.disablebtn = false;
-          vm.loginText = "登陆";
+					this.axios.get('/api/dlu').then((response) => {
+       		console.log(response)
+       				response.data.forEach((val,key) =>{
+       					if((response.data[key].username==this.username)&(response.data[key].password==this.pwd)){
+       						alert('登录成功')
+       					}else{
+       						console.log(response.data[key].password)
+       						alert('登录失败')
+       					}
+       				})			
         })
+        .catch(function (error) {
+          console.log(error);
+        });
       }
     }
   }
