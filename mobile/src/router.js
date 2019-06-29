@@ -14,6 +14,7 @@ import goods from './components/Xgoods.vue'
 import login from './components/Xlogin.1.vue'
 import register from './components/Xregister.vue'
 
+
 import gerenxxi from './components/gerenxxi.vue'
 
 Vue.use(Mint);

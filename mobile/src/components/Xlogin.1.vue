@@ -48,7 +48,13 @@
         this.$router.replace('/register')
       },
       login() {
-        
+        var vm = this;
+        this.disablebtn = true;
+        this.loginText = "登陆中";
+        this.$reqs.post('/users/login', {
+          username: this.username,
+          password: this.password
+        })
 					this.axios.get('/api/dlu').then((response) => {
        		console.log(response)
        				response.data.forEach((val,key) =>{
