@@ -51,9 +51,10 @@
 <style>
 	.w-dibu{
 		border-top:1px solid #d6cece;
-		margin-top: 20px;
+		width: 100%;
 		display: flex;
 		justify-content: center;
+
 	}
 	.w-dibu-a{
 		font-size: 15px;

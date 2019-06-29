@@ -6,7 +6,7 @@
 			<div></div>
 		</div>
 		<div class="w-shezhi">
-			<mt-cell title="个人信息" is-link></mt-cell>
+			<router-link to="/gerenxxi" class="w-dibu-a"><mt-cell title="个人信息" is-link></mt-cell></router-link>
 			<mt-cell title="绑定手机" value="189****1236 " is-link></mt-cell>
 			<mt-cell title="设置密码" is-link value="修改 "></mt-cell>
 			<mt-cell title="支付设置" is-link></mt-cell>

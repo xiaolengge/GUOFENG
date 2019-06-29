@@ -9,9 +9,13 @@ import shezhi from './components/shezhi.vue'
 import tijiaoddan from './components/tijiaoddan.vue'
 import zhifu from './components/zhifu.vue'
 import chenggong from './components/chenggong.vue'
+<<<<<<< HEAD
 import goods from './components/Xgoods.vue'
 import login from './components/Xlogin.vue'
 import register from './components/Xregister.vue'
+=======
+import gerenxxi from './components/gerenxxi.vue'
+>>>>>>> 4ccdf642a38f1bf90e3651ef6dd824a58edc22d9
 Vue.use(Mint);
 
 
@@ -84,6 +88,11 @@ export default new Router({
 		path:'/chenggong',
 		name:'chenggong',
 		component:chenggong
+		},
+		{
+		path:'/gerenxxi',
+		name:'gerenxxi',
+		component:gerenxxi
 		},
 		
 		

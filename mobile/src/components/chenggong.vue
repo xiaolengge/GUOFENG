@@ -19,7 +19,7 @@
 <style>
 	.w-cgong{
 		height: 140px;
-		width: 380px;
+		width: 90%;
 		margin: 0 auto;
 		display: flex;
 		justify-content: space-around;

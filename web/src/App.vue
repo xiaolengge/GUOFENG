@@ -2,7 +2,7 @@
   <div id="app">
 		<vheader></vheader>
 		<router-view></router-view>
-		<dibu></dibu>
+		<dibu class="w-dibi-a"></dibu>
   </div>
 </template>
 

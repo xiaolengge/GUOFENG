@@ -48,6 +48,7 @@
         this.$router.replace('/register')
       },
       login() {
+<<<<<<< HEAD:mobile/src/components/Xlogin.vue
         var vm = this;
         this.disablebtn = true;
         this.loginText = "登陆中";
@@ -56,6 +57,22 @@
           password: this.password
         })
         
+=======
+					this.axios.get('/api/dlu').then((response) => {
+       		console.log(response)
+       				response.data.forEach((val,key) =>{
+       					if((response.data[key].username==this.username)&(response.data[key].password==this.pwd)){
+       						alert('登录成功')
+       					}else{
+       						console.log(response.data[key].password)
+       						alert('登录失败')
+       					}
+       				})			
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+>>>>>>> 4ccdf642a38f1bf90e3651ef6dd824a58edc22d9:mobile/src/components/Xlogin.1.vue
       }
     }
   }

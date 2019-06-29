@@ -1,6 +1,6 @@
 <template>
 	<div class="w-sdian-a">	
-		<router-link to="/lsp" v-for="item in list" :key="item.id">
+		<router-link to="/lsp" v-for="item in list" :key="item.id" @click="updates(item.dmian,item.dmin)">
 			<div class="w-sdian">
 					<div class="ttimg"><img :src="item.dmian" alt=""></div>
 					<div class="w-sdian-b">
@@ -29,9 +29,21 @@ export default {
 		]
       }
     },
+	methods:{
+		updates(img,name){
+				this.$router.push({
+				path:'/lsp',
+				name:'lsp',
+				params:{
+				 img : img,
+				 name : name,
+				}
+			})
+		}
+	},
 	created(){
 		 this.axios.get('/api/inx').then((response) => {
-		    console.log(this.list);
+		    // console.log(this.list);
 			response.data.forEach((val,key) => {
 				this.list.push(response.data[key]);	
 				// this.value = response.data[key].value
