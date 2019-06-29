@@ -11,8 +11,8 @@
 		        <input class="myinput" type="text" placeholder="手机号/用户名" v-model="username" />
 		      </div>
 		    <div class="xlogin1">
-				<label> 密&nbsp&nbsp&nbsp 码：</label>
-		      <input @keyup.13="login" class="myinput" type="password" placeholder="密码" v-model="password" />
+				<label> 密&nbsp; &nbsp; &nbsp; 码：</label>
+		      <input  class="myinput" type="password" placeholder="密码" v-model="password" @keyup="login"/>
 		    </div>
 		    <div class="login_other xlogin1">
 			  <span>
@@ -21,7 +21,7 @@
 			  </span>
 		      <a href="javascript:;">找回密码</a>
 		    </div>
-		    <button :disabled="disablebtn" class="login" @click="login"><router-link to="/goods">{{loginText}}</router-link></button>
+		    <button :disabled="disablebtn" class="login" @click="login"><router-link to="">{{loginText}}</router-link></button>
 			<br>
 			<button :disabled="disablebtn" class="login" @click="backRegister"><router-link to="/register">{{registerText}}</router-link></button>
 		  </div>
@@ -43,35 +43,30 @@
 				registerText: "注册"
       }
     },
+
     methods: {
-	  backLogin() {
-        this.$router.replace('/register')
+			backLogin() {
+        // this.$router.replace('/register')
       },
       login() {
-        var vm = this;
-        this.disablebtn = true;
-        this.loginText = "登陆中";
-        this.$reqs.post('/users/login', {
-          username: this.username,
-          password: this.password
-        })
-					this.axios.get('/api/dlu').then((response) => {
-       		console.log(response)
-       				response.data.forEach((val,key) =>{
-       					if((response.data[key].username==this.username)&(response.data[key].password==this.pwd)){
-       						alert('登录成功')
-       					}else{
-       						console.log(response.data[key].password)
-       						alert('登录失败')
-       					}
-       				})			
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-      }
+						this.axios.get('/api/dlu').then((response) => {
+							// console.log(response)
+									response.data.forEach((val,key) =>{
+										if((response.data[key].username==this.username)&(response.data[key].password==this.password)){
+											console.log('cg')
+											this.$children[0].to = '/goods'
+											console.log(this)
+											this.$router.push('/wode')
+										}else{
+											console.log('登录失败')
+											
+										}
+									})			
+						})
+				}
+      },
+			
     }
-  }
 </script>
 <style scope>
 	.title span{

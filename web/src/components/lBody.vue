@@ -82,6 +82,7 @@ export default {
 				sp_name:'肯德基',
 				diz:'龙马潭区xx街道xx号',
 				pj:'xxx条',
+				
 				yh:[
 				],
 				tj:[
@@ -89,21 +90,25 @@ export default {
 				]
 			}
 		},
+		mounted: function () {
+		  this.sp_name = this.$route.query.name
+		  this.home_url = this.$route.query.img
+		  console.log(this.$route.query)
+		},
 		methods:{
-			getParams () {
-			// 取到路由带过来的参数 
-				
-				var cimg = this.$route.params.img
-				var cname = this.$route.params.name
-				console.log(this.$route)
-				console.log(cname)
-				// 将数据放在当前组件的数据内
-				this.sp_name = cname;
-				this.home_url = cimg;
-			  }
+			// getParams () {
+			// // 取到路由带过来的参数 
+			// 	var cimg = this.$route.query.img
+			// 	var cname = this.$route.query.name
+			// 	console.log(this.$route)
+			// 	console.log(cname)
+			// 	// 将数据放在当前组件的数据内
+			// 	this.sp_name = cname;
+			// 	this.home_url = cimg;
+			//   }
 		},
 		created(){		
-       this.getParams()
+			// this.getParams()
 			 this.axios.post('/api/huoqu').then((response) => {
 			    console.log(response.data);
 				response.data.forEach((val,key) => {
@@ -123,10 +128,10 @@ export default {
 			     console.log(error);
 			   });
 		},
-		watch: {
-		// 监测路由变化,只要变化了就调用获取路由参数方法将数据存储本组件即可
-		  '$route': 'getParams'
-		}
+		// watch: {
+		// // 监测路由变化,只要变化了就调用获取路由参数方法将数据存储本组件即可
+		//   '$route': 'getParams'
+		// }
 		
 	}
 </script>

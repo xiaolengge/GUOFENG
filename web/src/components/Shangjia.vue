@@ -1,7 +1,7 @@
 <template>
 	<div class="w-sdian-a">	
-		<router-link to="/lsp" v-for="item in list" :key="item.id" @click="updates(item.dmian,item.dmin)">
-			<div class="w-sdian">
+		<router-link to="/lsp" v-for="item in list" :key="item.id">
+			<div class="w-sdian" @click="updates(item.dmian,item.dmin)">
 					<div class="ttimg"><img :src="item.dmian" alt=""></div>
 					<div class="w-sdian-b">
 						<span class="w-sdian-c">{{item.dmin}}</span>
@@ -34,7 +34,7 @@ export default {
 				this.$router.push({
 				path:'/lsp',
 				name:'lsp',
-				params:{
+				query:{
 				 img : img,
 				 name : name,
 				}

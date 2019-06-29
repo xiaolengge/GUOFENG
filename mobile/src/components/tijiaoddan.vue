@@ -2,7 +2,7 @@
 	<div class="w-tijiao-zuiwai">
 	<div class="w-tijioa-c">
 		<div class="w-yd-tbu">
-			<div class="w-yd-tbu-b"><</div>
+			<div class="w-yd-tbu-b"><router-link to="/goods" class="w-dibu-a"><</router-link></div>
 			<div><span>提交订单</span></div>
 			<div class="w-yd-tbu-c"></div>
 		</div>

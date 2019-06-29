@@ -81,6 +81,7 @@
 		
 		<div>
 			<div class="w-lb-h">附近商家</div>
+			<router-link to="/goods" class="w-dibu-a">
 			<div class="w-lb-i" v-for="item in list" :key='item.id' >
 				<div><img :src="item.dmian" alt="" class="w-lb-j" ></div>
 				<div class="w-lb-n">
@@ -94,6 +95,7 @@
 					
 				</div>	
 			</div>
+			</router-link>
 			
 		</div>
 		

@@ -20,6 +20,7 @@
 			
 			
 			<!-- <div  class="shopdetail"></div> -->
+			<router-link to="/tijiaoddan" class="w-dibu-a">
 			<div class="list-group1">
 				<div class="">
 					<ul class="">
@@ -54,6 +55,7 @@
 				</div>
 				 
 			</div>
+			</router-link>
          
         </div>
         <div v-for="(val,key) in a" :key="key" @click="getGood(val.kind)">
