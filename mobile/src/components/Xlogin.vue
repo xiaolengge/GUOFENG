@@ -21,9 +21,9 @@
 			  </span>
 		      <a href="javascript:;">找回密码</a>
 		    </div>
-		    <button :disabled="disablebtn" class="login" @click="login">{{loginText}}</button>
+		    <button :disabled="disablebtn" class="login" @click="login"><router-link to="/goods">{{loginText}}</router-link></button>
 			<br>
-			<button :disabled="disablebtn" class="login" @click="backRegister">注册</button>
+			<button :disabled="disablebtn" class="login" @click="backRegister"><router-link to="/register">{{registerText}}</router-link></button>
 		  </div>
 		</div>
 	 </div>
@@ -39,7 +39,8 @@
         username: "admin",
         password: "123456",
         disablebtn: false,
-        loginText: "登录"
+        loginText: "登录",
+				registerText: "注册"
       }
     },
     methods: {
@@ -53,21 +54,8 @@
         this.$reqs.post('/users/login', {
           username: this.username,
           password: this.password
-        }).then(function (res) {
-          if (res.data.status === true) {
-            vm.$router.replace('/home');
-          } else {
-            //弹窗
-            Toast({
-              message: res.data.errMsg,
-            });
-            vm.disablebtn = false;
-            vm.loginText = "登陆";
-          }
-        }).catch(function (err) {
-          vm.disablebtn = false;
-          vm.loginText = "登陆";
         })
+        
       }
     }
   }
@@ -78,7 +66,7 @@
 		padding:1.875rem;
 	}
     .xlogin{
-	   height:100%;
+	  height:100%;
 		width:100%;
 		text-align:center;
 		background:url(../assets/img/login.jpg);
@@ -87,20 +75,21 @@
 		background-position: center;
 		background-size:150% 100%;
 		position: absolute;
-		left:0px;
+		left:0;
+		bottom:0;
    } 
     .xlogin1{
 	   padding:0.625rem;
    }
     .backlogin{
-	    position:relative;
+	  position:relative;
 		top:20%;
-		width:20rem;
+		/* width:20rem; */
 		margin:0 auto;	
    }
     .myinput{
 		height:1.875rem;
-		width:12.5rem;
+		width:70%;
    }
     .login_other{
 		font-size:14px;
@@ -114,12 +103,17 @@
 		color: #000;
 	}
 	.login{
+		
 		font-size:18px;
 		border-radius:0.3125rem;
 		height:2.25rem;
-		width:13rem;
+		width:70%;
 		margin:0.25rem 0 0 4.25rem;
 		background-color:rgb(73,210,67);
 		border-color:rgb(73,210,67);
+	}
+	.login a{
+		color: #000;
+		text-decoration:none;
 	}
 </style>

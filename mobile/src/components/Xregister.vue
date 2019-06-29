@@ -81,7 +81,7 @@
 	.xregister1{
 		position:relative;
 		top:20%;
-		width:20rem;
+		/* width:20rem; */
 		margin:0 auto;	
 	}
 	.input_group{
@@ -90,15 +90,17 @@
 	}
 	.input_group input{
 		height:1.875rem;
-		width:12.5rem;
+		/* width:12.5rem; */
 	}
 	.ok_btn{
+		width:30%;
 		height:1.875rem;
 		margin:1.25rem 1.875rem;
 		background-color:rgb(73,210,67);
 		border-color:rgb(73,210,67);
 	}
 	.cancel_btn{
+		width:30%;
 		height:1.875rem;
 		margin-left:0.625rem;
 		background-color:rgb(73,210,67);

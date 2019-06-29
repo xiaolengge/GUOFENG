@@ -80,7 +80,7 @@
 		</div>
 		
 		<div>
-			<div class="w-lb-h">附近商家</div>
+			<div class="w-lb-h"><router-link to="/goods">附近商家</router-link></div>
 			<div class="w-lb-i">
 				<div><img :src="dmian" alt="" class="w-lb-j" ></div>
 				<div class="w-lb-n">
@@ -160,9 +160,8 @@
 		margin: 5px;
 		display: flex;
 	}
-	.w-lb-h{
+	.w-lb-h{		
 		font-size: 25px;
-		color: #000;
 		font-weight: 700;
 		margin: 5px;
 	}
@@ -180,6 +179,10 @@
 	height: 120px;
 	margin: 5px;
 	text-align: center;
+}
+.w-lb-h a{
+	text-decoration:none;
+	color:#000;
 }
 .w-lb-d{
 	height: 120px;

@@ -9,6 +9,9 @@ import shezhi from './components/shezhi.vue'
 import tijiaoddan from './components/tijiaoddan.vue'
 import zhifu from './components/zhifu.vue'
 import chenggong from './components/chenggong.vue'
+import goods from './components/Xgoods.vue'
+import login from './components/Xlogin.vue'
+import register from './components/Xregister.vue'
 Vue.use(Mint);
 
 
@@ -22,6 +25,24 @@ export default new Router({
 		path:'/',
 		name:'index',
 		component:index
+		
+		},
+		{
+		path:'/goods',
+		name:'goods',
+		component:goods
+		
+		},
+		{
+		path:'/login',
+		name:'login',
+		component:login
+		
+		},
+		{
+		path:'/register',
+		name:'register',
+		component:register
 		
 		},
 		{
