@@ -189,8 +189,8 @@
 		overflow: hidden;
 	}
 	.w-lb-a{
-		width: 400px;
-		height: 120px;
+		width:100%;
+		height: 100%;
 	}
 
 	.mint-searchbar-inner{

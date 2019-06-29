@@ -64,8 +64,8 @@
 		margin-top: 10px;
 	}
 	.w-hyuan-g img{
-		height: 130px;
-		width: 372px;
+		height:100%;
+		width: 100%;
 		border-radius: 10px;
 	}
 	.w-hyuan-h{
@@ -97,7 +97,7 @@
 	border-radius: 7px;
 }
 	.w-hyuan-c{
-		width: 372px;
+		width: 80%;
 		height: 200px;
 	}
 	.w-hyuan-b{

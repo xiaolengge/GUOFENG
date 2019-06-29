@@ -118,7 +118,7 @@
 
 <style>
 	.w-wd-d{
-		width: 372px;
+		width: 90%;
 		height: 100%;
 		display: flex;
 		justify-content: space-around;
@@ -126,7 +126,7 @@
 		margin: 0 auto;
 	}
 	.w-wd-d-a{
-		width: 372px;
+		width: 90%;
 		height: 100%;
 		display: flex;
 		justify-content: space-around;
@@ -135,12 +135,12 @@
 		margin-top: 10px;
 	}
 	.w-wd-c{
-		width: 372px;
+		width: 90%;
 		margin: 0 auto;
 	}
 	.w-lb-a-a{
-		width: 373px;
-		height: 120px;
+		width: 100%;
+		height: 100%;
 		border-radius: 13px;
 	}
 	.w-lb-d-a{
@@ -188,7 +188,7 @@
 		border-radius: 7px;
 	}
 		.w-hyuan-c-a{
-			width: 372px;
+			width: 90%;
 			height: 140px;
 		}
 		.w-hyuan-b-a{

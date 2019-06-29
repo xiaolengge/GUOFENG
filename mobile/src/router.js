@@ -9,6 +9,7 @@ import shezhi from './components/shezhi.vue'
 import tijiaoddan from './components/tijiaoddan.vue'
 import zhifu from './components/zhifu.vue'
 import chenggong from './components/chenggong.vue'
+import gerenxxi from './components/gerenxxi.vue'
 Vue.use(Mint);
 
 
@@ -63,6 +64,11 @@ export default new Router({
 		path:'/chenggong',
 		name:'chenggong',
 		component:chenggong
+		},
+		{
+		path:'/gerenxxi',
+		name:'gerenxxi',
+		component:gerenxxi
 		},
 		
 		
