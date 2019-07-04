@@ -41,11 +41,11 @@ let  pin  = mongoose.Schema({
 })
 //首页店铺骨架
 let  index_dp  = mongoose.Schema({
-	id: Number,
 	value:String,
 	dmian:String,
 	dmin:String,
 	fyong:String,
+	yue:Number,
 })
 //定义注册登录表骨架
 let  zc  = mongoose.Schema({
@@ -85,13 +85,12 @@ const GOU = mongoose.model('GOU',gwc);
 /* GET users listing. */
 router.post('/', function(req, res, next) {
 	
-		var idp = new Idp({id:req.body.id,value:req.body.value,dmian:req.body.dmian,dmin:req.body.dmin,fyong:req.body.fyong});
+		var idp = new Idp({value:req.body.value,dmian:req.body.dmian,dmin:req.body.dmin,fyong:req.body.fyong});
 		idp.save(function(err,succ){
 			if(err){
-				console.log('保存失败')
+				res.send('保存失败')
 			}else{
-				console.log('保存成功')
-				console.log(succ)
+				res.send('保存成功')
 			}
 		});
 		// res.send(new_cat)

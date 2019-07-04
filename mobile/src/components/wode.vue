@@ -8,7 +8,8 @@
 		<div class="w-wd-a">
 			<div class="w-lb-f">
 				<img src="../assets/img/shoucang111.png" alt="" class="w-lb-g-a"><br>
-				<router-link to="/tijiaoddan" class="w-dibu-a">收藏</router-link>
+				<span>收藏
+				</span>
 			</div>
 			<div class="w-lb-f">
 				<img src="../assets/img/pingjia.png" alt="" class="w-lb-g-a"><br>

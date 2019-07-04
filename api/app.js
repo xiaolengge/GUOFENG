@@ -16,6 +16,7 @@ var apiRouter = require('./routes/api');
 var app = express();
 //开启
 // view engine setup
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 

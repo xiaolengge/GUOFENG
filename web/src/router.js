@@ -10,6 +10,7 @@ import Jies from './components/jiesuan.vue'
 import Person from './components/Xperson.vue'
 import Login from './components/Xlogin.vue'
 import Register from './components/Xregister.vue'
+import hezuo from './components/hezuo.vue'
 
 Vue.use(Router)
 
@@ -37,9 +38,9 @@ export default new Router({
 			path:'/dingdan',
 			name:'dingdan',
 			component:dingdan,
-			meta:{
-				isLogin:true,
-			}
+// 			meta:{
+// 				isLogin:true,
+// 			}
 		},
 		{
 		path:'/jiameng',
@@ -57,7 +58,14 @@ export default new Router({
 			isLogin:true,
 		}
 		},
-		
+		{
+		path:'/hezuo',
+		name:'hezuo',
+		component:hezuo,
+// 		meta:{
+// 			isLogin:true,
+// 		}
+		},
 		
 		{
 		path:'/person',
@@ -81,7 +89,8 @@ export default new Router({
 		component:Login,
 		meta:{
 			isLogin:false,
-		}
+		},
+		
 		},
 		{
 		  path: '/lbody',

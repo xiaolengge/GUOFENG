@@ -7,10 +7,12 @@
 			 <div class="demo-image__placeholder" >
 				  <div class="block">
 					<img :src="src" alt="">
+					<router-link to="/hezuo" class="w-chongzhi">
 					<div class="w-jm-e">
 						<div class="w-jm-f"><span>外卖平台入驻</span></div>
 						<div class="w-jm-g"><span>平台优势，成交量有保障</span></div>
 					</div>
+					</router-link>
 				  </div>
 				  <div class="block">
 					<img :src="sra" alt="">
