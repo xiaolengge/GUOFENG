@@ -124,24 +124,24 @@ router.post('/zhuche', function(req, res, next) {
 			res.send = ('密码不能为空'); 
 			return;
 		}
-		DL.find({username:req.body.username}).then(function(userInfo ){
-		// console.log(userInfo); //若控制台返回空表示没有查到数据
-		if(userInfo){
+		DL.find({username:req.body.username}).then(function(userInfo){
+		console.log(userInfo); //若控制台返回空表示没有查到数据
+		if(userInfo == []){
 			//若数据库有该记录
-			res.send = ('用户名已被注册'); 
-			return;
-		}
-		// 用户名没有被注册则将用户保存在数据库中
-		
-		var new_zhanghao = new DL({username:req.body.username,password:req.body.password})
+			var new_zhanghao = new DL({username:req.body.username,password:req.body.password})
 			new_zhanghao.save(function(err,succ){
 				if(err){
 					console.log('保存失败')
 			}else{
-					console.log('保存成功')
+					res.send = (userInfo); 
+					console.log(userInfo)
 					console.log(succ)
 				}
 			});
+			return;
+		}
+		// 用户名没有被注册则将用户保存在数据库中
+		res.send('用户以注册');
 	});
 });
 //登录

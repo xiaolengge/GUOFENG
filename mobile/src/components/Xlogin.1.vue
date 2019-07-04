@@ -58,8 +58,7 @@
 											console.log(this)
 											this.$router.push('/wode')
 										}else{
-											console.log('登录失败')
-											
+											alert('登录失败')
 										}
 									})			
 						})

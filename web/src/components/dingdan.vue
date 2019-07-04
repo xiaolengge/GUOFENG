@@ -1,15 +1,13 @@
 <template>
 	<div class="w-ddan">	
 		<div class="w-ddan-a">
-			<template>
-	
 			  <el-tabs :tab-position="tabPosition" >
 				<el-tab-pane label="个人中心" >
 					<div class="w-ddan-b">
 						<div class="w-ddan-c">
 							<el-image :src="src" class='w-ddan-e'></el-image>
 							<div>
-								<span class="w-ddan-f">早上好，63717000420 	<br>
+								<span class="w-ddan-f">早上好，{{}} 	<br>
 									订餐了吗？提前订餐送的快！</span>
 							</div>
 						</div>
@@ -143,32 +141,31 @@
 					</div>
 				</el-tab-pane>
 			  </el-tabs>
-			</template>
 		</div>
 	</div>
-	
 </template>
 
 <script>
 	import axios from 'axios'
 	 export default {
 		data() {
-			
-       return {
-		items:[
-			{name:'商品'},
-			{name:'份数'},
-			{name:'单价'},
-			{name:'小计'}
-		],
-		one:[
-			{name:'蛋炒饭',danjia:20,jine:20}
-		],
-		tow:[
-			{name:'凉面',danjia:10,jine:10}
-		],
-			
-	
+		   return {
+			items:[
+				{name:'商品'},
+				{name:'份数'},
+				{name:'单价'},
+				{name:'小计'}
+			],
+			one:[
+				{name:'蛋炒饭',danjia:20,jine:20}
+			],
+			tow:[
+				{name:'凉面',danjia:10,jine:10}
+			],
+			yue:'111',
+			yuan:'222',
+			ge:'33',
+			jbi:'444',
 		  handleChange:'',
         tabPosition: 'left',
 				src: 'https://shadow.elemecdn.com/faas/desktop/media/img/default-avatar.38e40d.png?imageMogr2/format/webp/quality/85',
@@ -189,8 +186,7 @@
 	kongshuzu:[],
       };
     },
-	 methods:{
-		
+	 methods:{	
     // 加载china地点数据，三级
       getCityData:function(){
         var that = this
@@ -265,6 +261,7 @@
     },
     created:function(){
       this.getCityData()
+	  console.log(this)
    },
   
 

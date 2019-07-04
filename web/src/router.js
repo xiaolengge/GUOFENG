@@ -20,68 +20,98 @@ export default new Router({
 		{
 		path:'/',
 		name:'index',
-		component:index
+		component:index,
+		meta:{
+			isLogin:false,
+		}
 		},
 		{
 		path:'/index',
 		name:'index',
-		component:index
+		component:index,
+		meta:{
+			isLogin:false,
+		}
 		},	
 		{
-		path:'/dingdan',
-		name:'dingdan',
-		component:dingdan
+			path:'/dingdan',
+			name:'dingdan',
+			component:dingdan,
+			meta:{
+				isLogin:true,
+			}
 		},
 		{
 		path:'/jiameng',
 		name:'jiameng',
-		component:jiameng
+		component:jiameng,
+		// meta:{
+		// 	isLogin:false,
+		// }
 		},
 		{
 		path:'/jiesuan',
 		name:'jiesuan',
-		component:Jies
+		component:Jies,
+		meta:{
+			isLogin:true,
+		}
 		},
 		
 		
 		{
 		path:'/person',
 		name:'person',
-		component:Person
+		component:Person,
+		meta:{
+			isLogin:false,
+		}
 		},
 		{
 		path:'/register',
 		name:'register',
-		component:Register
+		component:Register,
+		meta:{
+			isLogin:false,
+		}
 		},
 		{
 		path:'/login',
 		name:'login',
-		component:Login
+		component:Login,
+		meta:{
+			isLogin:false,
+		}
 		},
-		
-		
-		
 		{
 		  path: '/lbody',
 		  name: 'lbody',
 		  component: lbody,
+		  meta:{
+		  	isLogin:false,
+		  },
 			children:[
 				{
 					path:'/lsp',
 					name:'lsp',
 					component:lsp,
+					meta:{
+						isLogin:true,
+					}
 					},
 					{
 						path:'/l_sp',
 						name:'l_sp',
 						component:l_sp,
+						meta:{
+							isLogin:true,
+						}
 						},
 			]
 			},
-			// {
-			//   path: '*',
-			//   redirect:'/lbody'
-			// },
+			{
+			  path: '*',
+			  redirect:'/index'
+			},
   ]
 })

@@ -7,11 +7,11 @@
 		</div>
         <div class="ul-login">
             <div class="item-login" ><input v-model="username"  class="input-login" type="text" placeholder="请输入用户名" /></div>
-            <div class="item-login"><input v-model="pwd"  class="input-login" type="password" placeholder="请输入登录密码" /></div>
+            <div class="item-login"><input v-model="password"  class="input-login" type="password" placeholder="请输入登录密码" @keyup.enter="login" /></div>
         </div>
 				<div class="login1">忘记密码？</div>
-        <div class="btn-box">
-            <button class="btn btn-login" @click="login">{{stateWord}}</button>
+        <div class="btn-box" @click="login" >
+            <div class="btn btn-login" >{{stateWord}}</div>
         </div>
 				<div class="login2">
 					<div>第三方登录</div>
@@ -20,7 +20,7 @@
 						<span><img src="../assets/QQ.jpg" alt=""></span>
 						<span><img src="../assets/weibo.jpg" alt=""></span>
 					</div>
-					<div @click="login">立即注册</div>
+					<div><router-link to="/register">立即注册</router-link></div>
 				</div>
     </div>
 	</form>
@@ -33,7 +33,7 @@ export default {
         return {
 			//登录的用户名及密码
 			username:'',
-			pwd: '',
+			password: '',
 			stateWord:'登录'  //登录时的状态
         }
     },
@@ -46,16 +46,22 @@ export default {
 	methods:{
         login(){
            this.axios.get('/api/dlu').then((response) => {
-           		console.log(response)
-           				response.data.forEach((val,key) =>{
-           					if((response.data[key].username==this.username)&(response.data[key].password==this.pwd)){
-           						alert('登录成功')
-           					}else{
-								console.log(response.data[key].password)
-           						// alert('登录失败')
-           					}
-           				})			
-            })
+           			response.data.forEach((val,key) =>{
+           				if((response.data[key].username==this.username)&(response.data[key].password==this.password)){
+           				  //设置Vuex登录标志为true，默认userLogin为false
+						  this.$store.dispatch("userLogin", true);
+						  //Vuex在用户刷新的时候userLogin会回到默认值false，所以我们需要用到HTML5储存
+						  //我们设置一个名为Flag，值为isLogin的字段，作用是如果Flag有值且为isLogin的时候，证明用户已经登录了。
+						  localStorage.setItem("Flag", "isLogin");
+						  //iViewUi的友好提示
+						  // this.$Message.success(data.data.message);
+						  //登录成功后跳转到指定页面
+						  this.$router.push("/index");
+           				}else{
+           					alert('用户名或密码错误')	
+           				}
+           			})			
+           })
             .catch(function (error) {
               console.log(error);
             });
@@ -106,8 +112,9 @@ form{
 .btn-login{
 	font-size:18px;
 	color:#055;
-	width:18.75rem;
+	width:9.75rem;
 	height:2.1875rem;
+	margin: 0 auto;
 	/* border-radius:2.1875rem; */
 	background-color:rgb(73,210,67);
 	

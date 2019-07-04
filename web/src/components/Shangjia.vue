@@ -57,9 +57,13 @@ export default {
 </script>
 
 <style>
+	a{
+		text-decoration: none;
+	}
 	.w-sdian-d{
 		color: #999;
 		font-size: 13px;
+		
 	}
 	.w-sdian{
 		width: 200px;

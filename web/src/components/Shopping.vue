@@ -12,7 +12,7 @@
 					<!-- <div class="img"><img :src="item.img" alt=""></div> -->
 					<div class="naem">{{item.name}}</div>
 					<div class="danjia">¥{{item.jiage}}</div>
-					<el-input-number size="mini" v-model="item.num" @change="sss" :min='0'></el-input-number>
+					<el-input-number size="mini" :value="item.num" @change="sss" :min='0'></el-input-number>
 					<div class="zongjia">¥{{item.zj}}</div>
 					<div class="del">移除</div>
 				</li>

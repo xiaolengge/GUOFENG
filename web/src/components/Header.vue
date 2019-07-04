@@ -6,9 +6,12 @@
 				<el-menu-item index="2"><router-link to="/dingdan"  class="w-chongzhi">我的订单</router-link></el-menu-item>
 				<el-menu-item index="3" ><router-link to="/jiameng"  class="w-chongzhi">加盟合作</router-link></el-menu-item>
 				<el-menu-item index="4"><router-link to="/person">我的客服</router-link></el-menu-item>
-				<el-menu-item index="6" class="w-a1" ><router-link to="/login">登录</router-link></el-menu-item>
-				<el-menu-item index="7" ><router-link to="register">注册</router-link></el-menu-item>
-
+				<el-menu-item index="6" class="w-a1" :class="bbc"><router-link to="/login">登录</router-link></el-menu-item>
+				<el-menu-item index="7" :class="bbc"><router-link to="register">注册</router-link></el-menu-item>
+				<el-menu-item index="8" :class="bba"  v-for='item in isdl' :key="item.id" class="spadl" @click="singd">
+					<div class="tthead"><img :src="item.head" alt=""></div>
+					<span>{{item.name}}</span>
+				</el-menu-item>
 		</el-menu>
   </div>
 </template>
@@ -19,15 +22,46 @@ export default {
   data() {
      return {
        activeIndex: '1',
-       activeIndex2: '1'
+	   bba:{
+	   	"tta":true,
+	   },
+	   bbc:{
+	   	"tta":false,
+	   },
+	   isdl:[
+		   // {head:'http://img0.imgtn.bdimg.com/it/u=2957561621,1340855681&fm=26&gp=0.jpg',name:'没有名字',id:1,}
+	   ]
      };
+   },
+   created() {
+		// console.log(this.$store.getters.isLogin)
+		if(this.$store.getters.isLogin == true){
+			this.bba.tta = false;
+			this.bbc.tta = true;
+			this.axios.get('/api/cfkq').then((response) => {
+			   console.log(this);
+				response.data.forEach((val,key) => {
+				this.isdl.push(response.data[key]);
+								})
+				console.log(this.isdl)
+			 })
+		}else{
+			this.bba.tta = true;
+			this.bbc.tta = false;
+			console.log('222')
+		}
    },
    methods: {
      handleSelect(key, keyPath) {
        console.log(key, keyPath);
   			
   			
-     }
+     },
+	 singd(){
+		 localStorage.removeItem("Flag")
+		 this.$router.push('/login')
+		 
+	 }
    }
 }
 </script>
@@ -74,4 +108,21 @@ export default {
 	.w-a1{
 		margin-left: 150px;
 	}
+	.tta{
+		display: none;
+	}
+	.spadl{
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		font-size: 16px;
+		.tthead{
+			height: 100%;
+			img{
+				height: 80%;
+				border-radius: 100%;
+			}
+		}
+	}
+	
 </style>

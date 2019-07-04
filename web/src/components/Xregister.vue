@@ -85,7 +85,8 @@ export default {
 		},
 		register() {
 			this.axios.post('/api/zhuche',{ username: this.username, password: this.pwd }).then((response) => {
-					console.log(response)			
+					console.log(response);
+					this.$router.push('/login')
 			 })
 			 .catch(function (error) {
 			   console.log(error);
