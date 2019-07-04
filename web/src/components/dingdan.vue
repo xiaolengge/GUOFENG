@@ -4,10 +4,10 @@
 			  <el-tabs :tab-position="tabPosition" >
 				<el-tab-pane label="个人中心" >
 					<div class="w-ddan-b">
-						<div class="w-ddan-c">
+						<div class="w-ddan-c" v-for="item in user" :key="item.id" >
 							<el-image :src="src" class='w-ddan-e'></el-image>
 							<div>
-								<span class="w-ddan-f">早上好，{{}} 	<br>
+								<span class="w-ddan-f">早上好，{{item.name}} 	<br>
 									订餐了吗？提前订餐送的快！</span>
 							</div>
 						</div>
@@ -29,17 +29,11 @@
 									<td class="w-biaoge-a" v-for="item in items">{{item.name}}</td>
 									
 								</tr>
-									<tr  v-for="(item,aa) in one" :key="item.id">
+								<tr  v-for="(item,aa) in one" :key="item.id">
 									<td class="w-biaoge-a" >{{item.name}}</td>
 									<td class="w-biaoge-b"><el-input-number v-model="num" @change="handleChange" :min="1" :max="10" label="描述文字"></el-input-number></td>
-									<td class="w-biaoge-c">{{item.danjia}}元</td>
-									<td class="w-biaoge-c">{{item.jine}}元</td>
-								</tr>
-									<tr v-for="(item,bb) in tow" :key="item.id">
-									<td class="w-biaoge-a">{{item.name}}</td>
-									<td class="w-biaoge-b"><el-input-number v-model="nup" @change="handleChange" :min="1" :max="10" label="描述文字"></el-input-number></td>
-									<td class="w-biaoge-c">{{item.danjia}}元</td>
-									<td class="w-biaoge-c">{{item.jine}}元</td>
+									<td class="w-biaoge-c">{{item.jiage}}元</td>
+									<td class="w-biaoge-c">{{item.xiaoji}}元</td>
 								</tr>
 								
 							</table>
@@ -57,21 +51,13 @@
 									<td class="w-biaoge-a" v-for="item in items">{{item.name}}</td>
 									
 								</tr>
-									<tr  v-for="(item,aa) in one" :key="item.id">
+								<tr  v-for="(item,aa) in one" :key="item.id">
 									<td class="w-biaoge-a" >{{item.name}}</td>
 									<td class="w-biaoge-b"><el-input-number v-model="num" @change="handleChange" :min="1" :max="10" label="描述文字"></el-input-number></td>
-									<td class="w-biaoge-c">{{item.danjia}}元</td>
-									<td class="w-biaoge-c">{{item.jine}}元</td>
+									<td class="w-biaoge-c">{{item.jiage}}元</td>
+									<td class="w-biaoge-c">{{item.xiaoji}}元</td>
 								</tr>
-									<tr v-for="(item,bb) in tow" :key="item.id">
-									<td class="w-biaoge-a">{{item.name}}</td>
-									<td class="w-biaoge-b"><el-input-number v-model="nup" @change="handleChange" :min="1" :max="10" label="描述文字"></el-input-number></td>
-									<td class="w-biaoge-c">{{item.danjia}}元</td>
-									<td class="w-biaoge-c">{{item.jine}}元</td>
-								</tr>
-								
-							</table>
-							
+							</table>	
 						</div>
 					</div>
 				</el-tab-pane>
@@ -96,37 +82,16 @@
 						<div class="w-ddan-j"><span>收货地址</span></div>
 						<div class="w-ddan-k">
 							<div class="linkage">
-							<el-select
-							  v-model="sheng"
-							  @change="choseProvince"
-							  placeholder="省级地区">
-							  <el-option
-								v-for="item in province"
-								:key="item.id"
-								:label="item.value"
-								:value="item.id">
+							<el-select v-model="sheng" @change="choseProvince" placeholder="省级地区">
+							  <el-option v-for="item in province" :key="item.id" :label="item.value" :value="item.id">
 							  </el-option>
 							</el-select>
-							<el-select
-							  v-model="shi"
-							  @change="choseCity"
-							  placeholder="市级地区">
-							  <el-option
-								v-for="item in shi1"
-								:key="item.id"
-								:label="item.value"
-								:value="item.id">
+							<el-select v-model="shi" @change="choseCity" placeholder="市级地区">
+							  <el-option v-for="item in shi1" :key="item.id" :label="item.value" :value="item.id">
 							  </el-option>
 							</el-select>
-							<el-select
-							  v-model="qu"
-							  @change="choseBlock"
-							  placeholder="区级地区">
-							  <el-option
-								v-for="item in qu1"
-								:key="item.id"
-								:label="item.value"
-								:value="item.id">
+							<el-select v-model="qu" @change="choseBlock" placeholder="区级地区" >
+							  <el-option v-for="item in qu1" :key="item.id" :label="item.value" :value="item.id">
 							  </el-option>
 							</el-select>
 						  </div>
@@ -137,7 +102,12 @@
 						<div>
 							<el-input v-model="input" placeholder="请输入详细地址"></el-input>
 						</div>
+						<div class="w-ddan-j"><span>收取人</span></div>
 						
+						<div>
+							<el-input v-model="input" placeholder="请输入收件者"></el-input>
+						</div>
+						<button class="sub">提交</button>
 					</div>
 				</el-tab-pane>
 			  </el-tabs>
@@ -146,7 +116,6 @@
 </template>
 
 <script>
-	import axios from 'axios'
 	 export default {
 		data() {
 		   return {
@@ -157,33 +126,30 @@
 				{name:'小计'}
 			],
 			one:[
-				{name:'蛋炒饭',danjia:20,jine:20}
-			],
-			tow:[
-				{name:'凉面',danjia:10,jine:10}
+				{id:8,name:'蛋炒饭',danjia:20,jine:20}
 			],
 			yue:'111',
 			yuan:'222',
 			ge:'33',
 			jbi:'444',
-		  handleChange:'',
-        tabPosition: 'left',
-				src: 'https://shadow.elemecdn.com/faas/desktop/media/img/default-avatar.38e40d.png?imageMogr2/format/webp/quality/85',
-				
-				num:1,
-				nup:1,
+			handleChange:'',
+			tabPosition: 'left',
+			src: 'https://shadow.elemecdn.com/faas/desktop/media/img/default-avatar.38e40d.png?imageMogr2/format/webp/quality/85',
+			num:1,
+			nup:1,
 			input:'',
-			 mapJson:'/chengshi.json',
-      province:'',
-      sheng: '',
-      shi: '',
-      shi1: [],
-      qu: '',
-      qu1: [],
-      city:'',
-      block:'',
-
-	kongshuzu:[],
+			mapJson:'/chengshi.json',
+			province:'',
+			sheng: '',
+			shi: '',
+			shi1: [],
+			qu: '',
+			qu1: [],
+			city:'',
+			block:'',
+			kongshuzu:[],
+			user:[],
+			xiaoji:''
       };
     },
 	 methods:{	
@@ -249,19 +215,34 @@
             this.qu1 = this.city[index3].children
             this.qu = this.city[index3].children[0].value
             this.E = this.qu1[0].id
-            // console.log(this.E)
+            console.log(this)
           }
         }
       },
       // 选区
       choseBlock:function(e) {
         this.E=e;
-        // console.log(this.E)
+        console.log(this.E)
       },
+	  
     },
-    created:function(){
+    created(){
       this.getCityData()
-	  console.log(this)
+	  
+	  this.$parent.$children.forEach((val,key) =>{
+		  // console.log(this.$parent.$children[0])
+		  if(this.$parent.$children[key]._uid ==4){
+			  this.user.push(this.$parent.$children[key].isdl[0])
+		  }
+	  })
+	  axios.get('/api/gouhuo').then((response) =>{
+	  	console.log(response)
+	  	response.data.forEach((val,key) => {
+	  		if(response.data[key].fenshu !==null || undefined){
+	  			this.one.push(response.data[key]);
+	  		}				
+	  	})
+	  })
    },
   
 
@@ -311,7 +292,6 @@
 	}
 	.w-ddan-n{
 		width: 660px;
-		height: 200px;
 		background: #fff;
 		margin-bottom: 300px;
 	}
@@ -383,5 +363,9 @@
 		justify-content: center;
 		align-items:center;
 	}
-
+	.sub{
+		margin-top: 30px;
+		margin-bottom: 30px;
+		/* background-color: rgb(); */
+	}
 </style>
