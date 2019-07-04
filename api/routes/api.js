@@ -29,6 +29,7 @@ let  sunzi  = mongoose.Schema({
 	img:String,
 	jiage:Number,
 	fenshu:String,
+	xiaoji:String,
 })
 //评论骨架
 let  pin  = mongoose.Schema({
@@ -55,6 +56,7 @@ let  zc  = mongoose.Schema({
 let  cfk  = mongoose.Schema({
 	name:String,
 	dizhi:String,
+	head:String,
 })
 //购物车骨架
 let  gwc  = mongoose.Schema({
