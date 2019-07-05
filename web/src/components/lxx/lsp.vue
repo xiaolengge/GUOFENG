@@ -34,13 +34,13 @@
 			},
 			methods:{
 				addg(id){
-					console.log(this.list[id])
 					axios.post('/api/gouadd',this.list[id]).then((response) =>{
 						console.log(response)
 					})
-					
+					axios.post('/api/dd',this.list[id]).then((response) =>{
+						console.log(response)
+					})
 				},
-
 			},
 			created(){
 				 this.axios.post('/api/huoqu3').then((response) => {

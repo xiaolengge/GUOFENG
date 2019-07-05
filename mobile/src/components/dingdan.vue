@@ -18,7 +18,7 @@
 		<div>
 			<mt-tab-container v-model="selected" class="w-dd-j">
 			  <mt-tab-container-item id="1" style="display: block;">
-				<div class="w-dd-d" v-for="ite in  spjs" :key="ite.id">
+				<div class="w-dd-d" v-for="ite in  dd" :key="ite.id">
 					<div  class="w-dd-e" >
 						<div class="w-dd-f">{{ite.name}}</div>
 						<div class="w-dd-g">支付成功</div>
@@ -33,22 +33,22 @@
 				</div>
 			  </mt-tab-container-item>
 			  <mt-tab-container-item id="2">
-				<div class="w-dd-d"  v-for="ite in  spjs" :key="ite.id">
+				<div class="w-dd-d"  v-for="item in  spjs" :key="item.id">
 					<div  class="w-dd-e" >
-						<div class="w-dd-f">{{ite.name}}</div>
+						<div class="w-dd-f">{{item.name}}</div>
 						<div class="w-dd-g">待支付</div>
 					</div>
 					<div class="w-dd-h">
-						<div><img :src="ite.img" alt=""></div>
+						<div><img :src="item.img" alt=""></div>
 						<div class="w-dd-i">
-							<span>{{ite.name}}</span><br>
-							<span>价钱:￥{{ite.jiage}}</span>
+							<span>{{item.name}}</span><br>
+							<span>价钱:￥{{item.jiage}}</span>
 						</div>
 					</div>
 				</div>
 			  </mt-tab-container-item>
 			  <mt-tab-container-item id="3">
-				<div class="w-dd-d"  v-for="ite in  spjs" :key="ite.id">
+				<div class="w-dd-d"  v-for="ite in  dd" :key="ite.id">
 					<div  class="w-dd-e" >
 						<div class="w-dd-f">{{ite.name}}</div>
 						<div class="w-dd-g">待收货</div>
@@ -95,7 +95,8 @@
 		jq:'100',
 		spjs:[
 			
-		]
+		],
+		dd:[]
 	    }
 	  },
 	  created(){
@@ -103,6 +104,12 @@
 		  	console.log(response)
 		  	response.data.forEach((val,key) => {
 		  			this.spjs.push(response.data[key]);
+		  	})
+		  })
+		  axios.get('/api/ddc').then((response) =>{
+		  	console.log(response)
+		  	response.data.forEach((val,key) => {
+		  			this.dd.push(response.data[key]);
 		  	})
 		  })
 	  }

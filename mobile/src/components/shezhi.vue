@@ -21,12 +21,34 @@
 		</div>
 		
 		<div class="w-shizhi-c">
-			<mt-button type="primary" id="w-shizhi-b">退出账户</mt-button>
+			<mt-button type="primary" id="w-shizhi-b" @click="tc">退出账户</mt-button>
 		</div>
 	</div>
 </template>
 
 <script>
+	export default {
+	  name: 'HelloWorld',
+	  data() {
+	     return {
+	       activeIndex: '1',
+		   bba:{
+		   	"tta":true,
+		   },
+		   bbc:{
+		   	"tta":false,
+		   },
+		   isdl:[]
+	     };
+	   },
+	   methods: {
+		 tc(){
+			 localStorage.removeItem("Flag")
+			 this.$router.push('/login')
+			 window.location.reload()
+		 }
+	   }
+	}
 </script>
 
 <style>

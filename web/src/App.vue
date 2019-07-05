@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 		<vheader></vheader>
-		<router-view></router-view>
+		<router-view  v-if="isRouterAlive"></router-view>
 		<dibu class="w-dibi-a"></dibu>
   </div>
 </template>
@@ -13,15 +13,26 @@ export default {
 	name: 'app',
 	components: {	
 	},
+	provide(){
+		return{
+			reload:this.reload
+		}
+	},
+	data(){
+		return{
+			isRouterAlive:true
+		}
+	},
+	methods:{
+		reload(){
+			this.isRouterAlive=false
+			this.$nextTick(function(){
+				this.isRouterAlive = true
+			})
+		}
+	},
 	created() {
-	//  var _data = {name:'qqq',age:13}
-	// this.axios.post('/api',_data).then(function (response) {
-	// 	console.log('发送');
-	//     console.log(response);
-	//   })
-	//   .catch(function (error) {
-	//     console.log(error);
-	//   });
+
     },
 }
 </script>

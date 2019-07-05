@@ -29,71 +29,105 @@ export default new Router({
 		{
 		path:'/',
 		name:'index',
-		component:index
-		
+		component:index,
+		meta:{
+			isLogin:false,
+		}
 		},
 		{
 		path:'/goods',
 		name:'goods',
-		component:goods
-		
+		component:goods,
+		meta:{
+			isLogin:true,
+		}
 		},
 		{
 		path:'/login',
 		name:'login',
-		component:login
-		
+		component:login,
+		meta:{
+			isLogin:false,
+		}
 		},
 		{
 		path:'/register',
 		name:'register',
-		component:register
-		
+		component:register,
+		meta:{
+			isLogin:false,
+		}
 		},
 		{
 		path:'/index',
 		name:'index',
-		component:index
+		component:index,
+		meta:{
+			isLogin:false,
+		}
 		},
 		{
 		path:'/huiyuan',
 		name:'huiyuan',
-		component:huiyuan
+		component:huiyuan,
+		meta:{
+			isLogin:false,
+		}
 		},
 			{
 		path:'/dingdan',
 		name:'dingdan',
-		component:dingdan
+		component:dingdan,
+		meta:{
+			isLogin:true,
+		}
 		},
 		{
 		path:'/wode',
 		name:'wode',
-		component:wode
+		component:wode,
+		meta:{
+			isLogin:true,
+		}
 		},
 		{
 		path:'/shezhi',
 		name:'shezhi',
-		component:shezhi
+		component:shezhi,
+		meta:{
+			isLogin:true,
+		}
 		},
 		{
 		path:'/tijiaoddan',
 		component:tijiaoddan,
-	
+		meta:{
+			isLogin:true,
+		}
 		},
 		{
 		path:'/zhifu',
 		name:'zhifu',
-		component:zhifu
+		component:zhifu,
+		meta:{
+			isLogin:true,
+		}
 		},
 		{
 		path:'/chenggong',
 		name:'chenggong',
-		component:chenggong
+		component:chenggong,
+		meta:{
+			isLogin:true,
+		}
 		},
 		{
 		path:'/gerenxxi',
 		name:'gerenxxi',
-		component:gerenxxi
+		component:gerenxxi,
+		meta:{
+			isLogin:true,
+		}
 		},
 		
 		

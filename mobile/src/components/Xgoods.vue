@@ -15,10 +15,6 @@
 				  </li>
 				</ul>
 			</div>
-			
-			
-			
-			
 			<!-- <div  class="shopdetail"></div> -->
 			<router-link to="/tijiaoddan" class="w-dibu-a">
 			<div class="list-group1">
@@ -31,22 +27,22 @@
 						<div v-for="(val,index) in goodlist" :key="index" class="shopdetail">
 						  <img :src="val.img">
 						  <span class="name">
-						    {{val.title}}
+						    {{val.name}}
 						    <br>
-						    <span class="num">月销量：{{val.num}}</span>
+						    <span class="num">月销量：{{val.jiage}}</span>
 						  </span>
-						  <div v-show="val.discount>0" class="originprice">
-						    <div class="discount">{{val.discount?val.discount+"折":""}}</div>
-						    {{val.discount?"限一次优惠":""}}
+						  <div v-show="val.fenshu>0" class="originprice">
+						    <div class="discount">{{val.fenshu?val.fenshu+"折":""}}</div>
+						    {{val.fenshu?"限一次优惠":""}}
 						  </div>
 						  <div class="price">
-						    ￥{{val.price}}
+						    ￥{{val.jiage}}
 						    <span class="orprice">{{val.originPrice?"￥"+val.originPrice:""}}</span>
 						  </div>
 						  <div class="addorjian">
-						    <div class="add" @click="add(val)">+</div>
-						    <div class="addnum">{{val.buynum}}</div>
-						    <div class="jian" @click="jian(val.kind,val.id)">-</div>
+						    <div class="add">+</div>
+						    <div class="addnum">{{val.__v}}</div>
+						    <div class="jian">-</div>
 						  </div>
 						  <br>
 						</div>
@@ -89,62 +85,21 @@ export default {
 		{name:'特色粥品'},
 		],
       goodlist: [
-		
-		{
-		  id:0,
-		  img: img1,
-		  title:"烟台苹果",
-		  price:0.1,
-		  num:69,
-		  kind:0,
-		  discount:0.2,
-		  originPrice:5,
-		  buynum:0
-		
-		
-		},
-		{
-		  id:1,
-		  img: img2,
-		  title:"柠檬",
-		  price:1,
-		  num:27,
-		  kind:0,
-		  discount:1,
-		  originPrice:10,
-		  buynum:0
-		},
-		{
-		  id:2,
-		  img: img3,
-		  title:"沙糖桔",
-		  price:4.99,
-		  num:63,
-		  kind:1,
-		  buynum:0
-		},
-		{id:3,
-		  img: img4,
-		  title:"香梨",
-		  price:2.5,
-		  num:56,
-		  kind:1,
-		  buynum:0
-		},
-		{
-		  id:4,
-		  img: img5,
-		  title:"猕猴桃",
-		  price:1.88,
-		  num:89,
-		  kind:1,
-		  buynum:0
-		}
 	  ],
       value: "",
       sumnum: 0,
       sumprice: 0
     };
+  },
+  created(){
+  	 this.axios.post('/api/huoqu3').then((response) => {
+  		response.data.forEach((val,key) => {
+  			// alert(response.data[key].fenshu)
+  			if(response.data[key].fenshu !==null || undefined){
+  				this.goodlist.push(response.data[key]);
+  			}				
+  		})
+  	  })
   },
 };
 </script>
@@ -344,7 +299,7 @@ export default {
   position: absolute;
   left:30%;
   top: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 .list-group ul li{
 	width:15%;

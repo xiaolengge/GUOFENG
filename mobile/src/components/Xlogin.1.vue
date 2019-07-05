@@ -12,7 +12,7 @@
 		      </div>
 		    <div class="xlogin1">
 				<label> 密&nbsp; &nbsp; &nbsp; 码：</label>
-		      <input  class="myinput" type="password" placeholder="密码" v-model="password" @keyup="login"/>
+		      <input  class="myinput" type="password" placeholder="密码" v-model="password"/>
 		    </div>
 		    <div class="login_other xlogin1">
 			  <span>
@@ -21,9 +21,9 @@
 			  </span>
 		      <a href="javascript:;">找回密码</a>
 		    </div>
-		    <button :disabled="disablebtn" class="login" @click="login"><router-link to="">{{loginText}}</router-link></button>
+		    <div :disabled="disablebtn" class="login" @click="login"><router-link to="">{{loginText}}</router-link></div>
 			<br>
-			<button :disabled="disablebtn" class="login" @click="backRegister"><router-link to="/register">{{registerText}}</router-link></button>
+			<div :disabled="disablebtn" class="login" @click="backRegister"><router-link to="/register">{{registerText}}</router-link></div>
 		  </div>
 		</div>
 	 </div>
@@ -53,10 +53,18 @@
 							// console.log(response)
 									response.data.forEach((val,key) =>{
 										if((response.data[key].username==this.username)&(response.data[key].password==this.password)){
-											console.log('cg')
-											this.$children[0].to = '/goods'
-											console.log(this)
-											this.$router.push('/wode')
+											 //设置Vuex登录标志为true，默认userLogin为false
+											this.$store.dispatch("userLogin", true);
+											//Vuex在用户刷新的时候userLogin会回到默认值false，所以我们需要用到HTML5储存
+											//我们设置一个名为Flag，值为isLogin的字段，作用是如果Flag有值且为isLogin的时候，证明用户已经登录了。
+											localStorage.setItem("Flag", "isLogin");
+											//iViewUi的友好提示
+											// this.$Message.success(data.data.message);
+											//登录成功后跳转到指定页面
+											// this.reload()
+																	 
+											this.$router.push("/index");
+											window.location.reload()
 										}else{
 											alert('登录失败')
 										}

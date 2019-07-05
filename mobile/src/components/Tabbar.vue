@@ -15,7 +15,7 @@
 			</mt-tab-item>
 			<mt-tab-item id="tab4">
 				<img slot="icon" src="../assets/img/gengduo.png" />
-				<router-link to="/login" class="w-dibu-a">我的</router-link>
+				<router-link to="/wode" class="w-dibu-a">我的</router-link>
 			</mt-tab-item>
 		</mt-tabbar>
 	</div>

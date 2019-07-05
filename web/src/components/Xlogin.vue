@@ -43,6 +43,7 @@ export default {
     },
     watch: {
     },
+	inject:['reload'],
 	methods:{
         login(){
            this.axios.get('/api/dlu').then((response) => {
@@ -56,7 +57,10 @@ export default {
 						  //iViewUi的友好提示
 						  // this.$Message.success(data.data.message);
 						  //登录成功后跳转到指定页面
+						  // this.reload()
+						 
 						  this.$router.push("/index");
+							window.location.reload()
            				}else{
            					alert('用户名或密码错误')	
            				}

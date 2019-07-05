@@ -5,7 +5,7 @@
 				<el-tab-pane label="个人中心" >
 					<div class="w-ddan-b">
 						<div class="w-ddan-c" v-for="item in user" :key="item.id" >
-							<el-image :src="src" class='w-ddan-e'></el-image>
+							<el-image :src="item.head" class='w-ddan-e'></el-image>
 							<div>
 								<span class="w-ddan-f">早上好，{{item.name}} 	<br>
 									订餐了吗？提前订餐送的快！</span>
@@ -125,7 +125,7 @@
 				{name:'小计'}
 			],
 			one:[
-				{id:8,name:'蛋炒饭',jiage:20,xiaoji:20}
+				// {id:8,name:'蛋炒饭',jiage:20,xiaoji:20}
 			],
 			yue:'111',
 			yuan:'222',
@@ -193,7 +193,7 @@
           }
         }).catch(function(error){console.log(typeof+ error)})
       },
-      // 选省
+      // // 选省
       choseProvince:function(e) {
         for (var index2 in this.province) {
           if (e === this.province[index2].id) {
@@ -207,7 +207,7 @@
           }
         }
       },
-      // 选市
+      // // 选市
       choseCity:function(e) {
         for (var index3 in this.city) {
           if (e === this.city[index3].id) {
@@ -218,7 +218,7 @@
           }
         }
       },
-      // 选区
+      // // 选区
       choseBlock:function(e) {
         this.E=e;
         console.log(this.E)
@@ -227,14 +227,13 @@
     },
     created(){
       this.getCityData()
-	  
-	  this.$parent.$children.forEach((val,key) =>{
-		  // console.log(this.$parent.$children[0])
-		  if(this.$parent.$children[key]._uid ==4){
-			  this.user.push(this.$parent.$children[key].isdl[0])
-		  }
-	  })
-	  axios.get('/api/gouhuo').then((response) =>{
+	  this.axios.get('/api/cfkq').then((response) => {
+	     console.log(this);
+	  	response.data.forEach((val,key) => {
+	  	this.user.push(response.data[key]);
+	  					})
+	   })
+	  axios.get('/api/ddc').then((response) =>{
 	  	response.data.forEach((val,key) => {
 	  		if(response.data[key].fenshu !==null || undefined){
 	  			this.one.push(response.data[key]);

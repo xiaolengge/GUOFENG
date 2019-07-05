@@ -38,17 +38,17 @@ export default new Router({
 			path:'/dingdan',
 			name:'dingdan',
 			component:dingdan,
-// 			meta:{
-// 				isLogin:true,
-// 			}
+			meta:{
+				isLogin:true,
+			}
 		},
 		{
 		path:'/jiameng',
 		name:'jiameng',
 		component:jiameng,
-		// meta:{
-		// 	isLogin:false,
-		// }
+		meta:{
+			isLogin:false,
+		}
 		},
 		{
 		path:'/jiesuan',
@@ -62,9 +62,9 @@ export default new Router({
 		path:'/hezuo',
 		name:'hezuo',
 		component:hezuo,
-// 		meta:{
-// 			isLogin:true,
-// 		}
+		meta:{
+			isLogin:true,
+		}
 		},
 		
 		{

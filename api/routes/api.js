@@ -69,7 +69,20 @@ let  gwc  = mongoose.Schema({
 	__v:Number,
 	_id:String
 })
+//订单骨架
+let  dingdan  = mongoose.Schema({
+	id: Number,
+	name:String,
+	peifang:String,
+	img:String,
+	jiage:Number,
+	fenshu:String,
+	__v:Number,
+	_id:String,
+})
 const CK = mongoose.model('CK',cfk);
+//定义订单集合
+const DD = mongoose.model('DD',dingdan);
 //定义一个首页店铺表
 const Idp = mongoose.model('Idp',index_dp);
 // 定义一个优惠表
@@ -102,9 +115,21 @@ router.post('/gouadd', function(req, res, next) {
 		var igwc = new GOU({id:req.body.id,fenshu:req.body.fenshu,img:req.body.img,jiage:req.body.jiage,name:req.body.name,peifang:req.body.peifang,__v:req.body.__v,_id:req.body._id,});
 		igwc.save(function(err,succ){
 			if(err){
-				console.log('保存失败')
+				console.log('保存失败22')
 			}else{
-				console.log('保存成功')
+				console.log('保存成功11')
+				console.log(succ)
+			}
+		});
+		// res.send(new_cat)
+});
+router.post('/dd', function(req, res, next) {
+		var dd = new DD({id:req.body.id,fenshu:req.body.fenshu,img:req.body.img,jiage:req.body.jiage,name:req.body.name,peifang:req.body.peifang,__v:req.body.__v,_id:req.body._id,});
+		dd.save(function(err,succ){
+			if(err){
+				console.log('保存失败22')
+			}else{
+				console.log('保存成功22')
 				console.log(succ)
 			}
 		});
@@ -236,6 +261,16 @@ router.get('/cfkq', function(req, res, next) {
 router.get('/gouhuo', function(req, res, next) {
 		const obj ={};
 		GOU.find(obj,(err,docs) =>{
+			if(err){
+				console.log('查询失败')
+			}else{
+				res.send(docs);
+			}
+		})
+});
+router.get('/ddc', function(req, res, next) {
+		const obj ={};
+		DD.find(obj,(err,docs) =>{
 			if(err){
 				console.log('查询失败')
 			}else{

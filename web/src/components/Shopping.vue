@@ -3,7 +3,7 @@
 		<div class="tit" @click='huo'>
 			<div class="gwc">
 				<span class="">购物车</span>
-				<span class="rm" @click="rm">[清空]</span>
+				<span class="rm" @click.stop="rm">[清空]</span>
 			</div>
 		</div>
 		<div class="con">
@@ -37,6 +37,7 @@
 		],
       } 
     },
+	inject:['reload'],
 	methods: {
 		sss() {
 			this.zzzj=0,
@@ -61,6 +62,7 @@
 			axios.get('/api/re').then((response) =>{
 				console.log(response)
 			})
+			this.reload()
 		}
 	},
 	created(){

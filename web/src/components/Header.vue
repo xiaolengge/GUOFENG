@@ -29,7 +29,6 @@ export default {
 	   	"tta":false,
 	   },
 	   isdl:[
-		   // {head:'http://img0.imgtn.bdimg.com/it/u=2957561621,1340855681&fm=26&gp=0.jpg',name:'没有名字',id:1,}
 	   ]
      };
    },
@@ -60,7 +59,7 @@ export default {
 	 singd(){
 		 localStorage.removeItem("Flag")
 		 this.$router.push('/login')
-		 
+		 window.location.reload()
 	 }
    }
 }
