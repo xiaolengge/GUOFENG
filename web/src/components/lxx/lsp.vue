@@ -54,7 +54,7 @@
 				  .catch(function (error) {
 				    console.log(error);
 				  });
-				this.getParams()
+				// this.getParams()
 			},
 
 	

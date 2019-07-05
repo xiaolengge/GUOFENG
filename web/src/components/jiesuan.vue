@@ -50,9 +50,11 @@
 			</div>
 			<div class="geiqian">
 				<div class="zongji">¥<span>{{ zzzj }}</span></div>
-				<el-row>
-					<el-button type="danger">支付</el-button>
-				</el-row>
+				<router-link to="/dingdan">
+					<el-row>
+						<el-button type="danger">支付</el-button>
+					</el-row>
+				</router-link>
 			</div>
 		</div>
 	</div>

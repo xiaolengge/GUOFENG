@@ -29,11 +29,11 @@
 									<td class="w-biaoge-a" v-for="item in items">{{item.name}}</td>
 									
 								</tr>
-								<tr  v-for="(item,aa) in one" :key="item.id">
+								<tr  v-for="(item,aa) in one" :key="item">
 									<td class="w-biaoge-a" >{{item.name}}</td>
 									<td class="w-biaoge-b"><el-input-number v-model="num" @change="handleChange" :min="1" :max="10" label="描述文字"></el-input-number></td>
 									<td class="w-biaoge-c">{{item.jiage}}元</td>
-									<td class="w-biaoge-c">{{item.xiaoji}}元</td>
+									<td class="w-biaoge-c">{{item.jiage}}元</td>
 								</tr>
 								
 							</table>
@@ -49,13 +49,12 @@
 							<table class="w-biaoge">
 								<tr>
 									<td class="w-biaoge-a" v-for="item in items">{{item.name}}</td>
-									
 								</tr>
-								<tr  v-for="(item,aa) in one" :key="item.id">
+								<tr  v-for="(item,aa) in one" :key="item">
 									<td class="w-biaoge-a" >{{item.name}}</td>
 									<td class="w-biaoge-b"><el-input-number v-model="num" @change="handleChange" :min="1" :max="10" label="描述文字"></el-input-number></td>
 									<td class="w-biaoge-c">{{item.jiage}}元</td>
-									<td class="w-biaoge-c">{{item.xiaoji}}元</td>
+									<td class="w-biaoge-c">{{item.jiage}}元</td>
 								</tr>
 							</table>	
 						</div>
@@ -126,7 +125,7 @@
 				{name:'小计'}
 			],
 			one:[
-				{id:8,name:'蛋炒饭',danjia:20,jine:20}
+				{id:8,name:'蛋炒饭',jiage:20,xiaoji:20}
 			],
 			yue:'111',
 			yuan:'222',
@@ -236,7 +235,6 @@
 		  }
 	  })
 	  axios.get('/api/gouhuo').then((response) =>{
-	  	console.log(response)
 	  	response.data.forEach((val,key) => {
 	  		if(response.data[key].fenshu !==null || undefined){
 	  			this.one.push(response.data[key]);

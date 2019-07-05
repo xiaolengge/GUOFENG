@@ -243,4 +243,14 @@ router.get('/gouhuo', function(req, res, next) {
 			}
 		})
 });
+router.get('/re', function(req, res, next) {
+		const obj ={};
+		GOU.remove(obj,(err,sb) => {
+			if(err){
+				console.log('删除失败')
+			}else{
+				res.send(sb);
+			}
+		})
+});
 module.exports = router;
