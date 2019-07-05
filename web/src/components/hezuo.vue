@@ -1,16 +1,16 @@
 <template>
 	<div>
 <el-form :label-position="labelPosition"  label-width="80px" :model="formLabelAlign">
-  <el-form-item label="名称">
+  <el-form-item label="输入店名">
     <el-input v-model="formLabelAlign.name"></el-input>
   </el-form-item>
-  <el-form-item label="活动区域">
+  <el-form-item label="店面图片">
     <el-input v-model="formLabelAlign.region"></el-input>
   </el-form-item>
-  <el-form-item label="活动形式">
+  <el-form-item label="配送费">
     <el-input v-model="formLabelAlign.type"></el-input>
   </el-form-item>
-   <el-button type="primary" @click="tijiao">立即创建</el-button>
+   <el-button type="primary" @click="tijiao" id="w-hezuo">立即创建</el-button>
 </el-form>
 	</div>
 </template>
@@ -47,4 +47,12 @@
 </script>
 
 <style>
+	#w-hezuo{
+		background: #22d783;
+		border-color:#22d783;
+		
+	}
+	.el-form{
+		background: #f5f5f6;
+	}
 </style>
